@@ -1,11 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora gastos</title>
+    <style>
+       
+        
+    </style>
 </head>
+
 <body>
-    
+    <header>
+        <a >Para valores decimais: use "." no lugar de ","</a>
+    </header>
+    <p>
+        <!--TESTE CALCULADORA DE GASTOS -->
+        <label for="distancia">Distância: </label>
+        <input type="text" id="distancia" placeholder="Digite a distância entra sua localização e o destino final: ">
+    </p>
+    <p>
+        <!--TESTE CALCULADORA DE GASTOS -->
+
+        <label for="preco">Valor combustível: </label>
+        <input type="text" id="preco" placeholder="Digite o preço do combustível na sua região: ">
+    </p>
+    <label for="carro">Gasto do carro(econômico (+-15km/l), intermediário(10km/l) ou alto(6lm/l) ): </label>
+        <input type="text" id="carro" placeholder="Digite o gasto do carro: ">
+
+    <button onclick="calcular()" title="Calcular o valor gasto em combustível: ">
+        Calcular&nbsp;&nbsp;</button>
+
+    <div id="resultado"></div>
+    <div id="mensagem"></div>
+    <script>
+        function calcular() {
+
+            let distancia = document.getElementById("distancia").value;
+            let preco = document.getElementById("preco").value;
+            let totalGasto = distancia * preco;
+            if(carro === "Econômico"){
+                totalGasto = (distancia*preco)/15
+            }else if(carro === "Intermediário"){
+                totalGasto = (distancia*preco)/10
+            }else{
+                totalGasto = (distancia*preco)/6
+            }
+            let resultadoDiv = document.getElementById("resultado");
+
+            resultadoDiv.innerHTML = `<p>O valor gasto com combustível para percorrer essa distância é: R$${totalGasto}</p>`
+        }
+    </script>
 </body>
+
 </html>
