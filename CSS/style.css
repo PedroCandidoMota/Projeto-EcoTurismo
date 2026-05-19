@@ -3,14 +3,43 @@ html{
 }
 body {
    background-color: #ebe9df;
+   margin: 0;
 }
-#imgRolaMoca {
+.container-imgRolaMoca {
    width: 100%;
-   height: 400px;
+   height: 100vh;
+   overflow: hidden;
+   position: sticky;
+   top: 0;
+   z-index: -1;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+   align-items: flex-start;
 }
-#img-RolaMoca {
-   width: 1920px;
-   height: 1080px;
+.container-imgRolaMoca img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   position:absolute;
+   top: 0;
+   left: 0;
+   z-index: -2;
 }
 
- 
+.container-texto {
+   color: #ffff;
+   text-align: left;
+   padding-left: 30px;
+}
+
+.container-texto h1 {
+   font-size: 8rem;
+}
+
+ .conteudo-site {
+   position: relative;
+   background-color: #ebe9df;
+   padding: 50px 20px;
+   min-height: 150vh;
+ }
