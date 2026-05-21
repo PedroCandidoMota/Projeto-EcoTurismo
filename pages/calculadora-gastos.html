@@ -2,17 +2,10 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora gastos</title>
-    <!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora gastos</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora gastos</title>
+  <style>
     /* ===== RESET BÁSICO ===== */
     * {
       margin: 0;
@@ -187,7 +180,8 @@
       border: 1.5px solid #c9c6ff;
       border-radius: 12px;
       padding: 20px 24px;
-      display: none; /* Fica escondido até calcular */
+      display: none;
+      /* Fica escondido até calcular */
     }
 
     .resultado h2 {
@@ -221,128 +215,138 @@
       font-weight: 600;
       display: none;
     }
+
+    /*===== Background (APENAS TESTE CASO O GRUPO PREFIRA COLOQUE OUTRA IMAGEM DEPOIS!!!!!!!!)====*/
+      body {
+        background-image: url('../images/paisemminas.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+    }
   </style>
 </head>
 
 <body>
-    <div class="card">
-        <h1>⛽ Cálculo do Combustível</h1>
 
-        <!-- CAMPOS DE ENTRADA -->
-        <div class="campos">
+  <div class="card">
+    <h1>⛽ Cálculo do Combustível</h1>
 
-            <!-- Distância -->
-            <div class="campo">
-                <label for="distancia">Distância percorrida</label>
-                <div class="input-linha">
-                    <input type="number" id="distancia" placeholder="0" min="0">
-                    <span class="sufixo">km</span>
-                </div>
-            </div>
+    <!-- CAMPOS DE ENTRADA -->
+    <div class="campos">
 
-            <!-- Consumo médio -->
-            <div class="campo">
-                <label for="consumo">Consumo médio do veículo</label>
-                <div class="input-linha">
-                    <input type="number" id="consumo" placeholder="0" min="0">
-                         class="sufixo">km / l</span>
-                </div>
-            </div>
-
-            <!-- Preço por litro -->
-            <div class="campo">
-                <label for="preco">Preço por litro</label>
-                <div class="input-linha">
-                    <span class="prefixo">R$</span>
-                    <input type="number" id="preco" placeholder="0,00" min="0" step="0.01">
-                </div>
-            </div>
-
+      <!-- Distância -->
+      <div class="campo">
+        <label for="distancia">Distância percorrida</label>
+        <div class="input-linha">
+          <input type="number" id="distancia" placeholder="0" min="0">
+          <span class="sufixo">km</span>
         </div>
+      </div>
 
-        <!-- CHECKBOX VOLTA -->
-        <label class="checkbox-linha">
-            <input type="checkbox" id="volta">
-            Adicionar o caminho de volta
-        </label>
-
-        <!-- BOTÕES -->
-        <div class="botoes">
-            <button class="btn-calcular" onclick="calcular()">CALCULAR</button>
-            <button class="btn-limpar" onclick="limpar()">LIMPAR</button>
+      <!-- Consumo médio -->
+      <div class="campo">
+        <label for="consumo">Consumo médio do veículo</label>
+        <div class="input-linha">
+          <input type="number" id="consumo" placeholder="0" min="0">
+          class="sufixo">km / l</span>
         </div>
+      </div>
 
-        <!-- MENSAGEM DE ERRO -->
-        <div class="erro" id="erro">
-            ⚠️ Preencha todos os campos corretamente antes de calcular.
+      <!-- Preço por litro -->
+      <div class="campo">
+        <label for="preco">Preço por litro</label>
+        <div class="input-linha">
+          <span class="prefixo">R$</span>
+          <input type="number" id="preco" placeholder="0,00" min="0" step="0.01">
         </div>
+      </div>
 
-        <!-- RESULTADO -->
-        <div class="resultado" id="resultado">
-            <h2>💰 Custo total da viagem</h2>
-            <div class="resultado-valor" id="custo-total">R$ 0,00</div>
-            <div class="resultado-detalhe" id="detalhe-resultado"></div>
-        </div>
-        <script>
-            // ===== FUNÇÃO CALCULAR =====
-            function calcular() {
-                // 1. Pegar os valores dos campos
-                var distancia = parseFloat(document.getElementById("distancia").value);
-                var consumo = parseFloat(document.getElementById("consumo").value);
-                var preco = parseFloat(document.getElementById("preco").value);
-                var volta = document.getElementById("volta").checked;
+    </div>
 
-                // 2. Esconder resultado e erro anteriores
-                document.getElementById("resultado").style.display = "none";
-                document.getElementById("erro").style.display = "none";
+    <!-- CHECKBOX VOLTA -->
+    <label class="checkbox-linha">
+      <input type="checkbox" id="volta">
+      Adicionar o caminho de volta
+    </label>
 
-                // 3. Verificar se os campos foram preenchidos corretamente
-                if (isNaN(distancia) || isNaN(consumo) || isNaN(preco) ||
-                    distancia <= 0 || consumo <= 0 || preco <= 0) {
-                    document.getElementById("erro").style.display = "block";
-                    return; // Para aqui se tiver erro
-                }
+    <!-- BOTÕES -->
+    <div class="botoes">
+      <button class="btn-calcular" onclick="calcular()">CALCULAR</button>
+      <button class="btn-limpar" onclick="limpar()">LIMPAR</button>
+    </div>
 
-                // 4. Se marcou "volta", dobrar a distância
-                if (volta) {
-                    distancia = distancia * 2;
-                }
+    <!-- MENSAGEM DE ERRO -->
+    <div class="erro" id="erro">
+      ⚠️ Preencha todos os campos corretamente antes de calcular.
+    </div>
 
-                // 5. Calcular quantos litros vão ser gastos
-                // Fórmula: litros = distância / consumo
-                var litros = distancia / consumo;
+    <!-- RESULTADO -->
+    <div class="resultado" id="resultado">
+      <h2>💰 Custo total da viagem</h2>
+      <div class="resultado-valor" id="custo-total">R$ 0,00</div>
+      <div class="resultado-detalhe" id="detalhe-resultado"></div>
+    </div>
+    <script>
+      // ===== FUNÇÃO CALCULAR =====
+      function calcular() {
+        // 1. Pegar os valores dos campos
+        var distancia = parseFloat(document.getElementById("distancia").value);
+        var consumo = parseFloat(document.getElementById("consumo").value);
+        var preco = parseFloat(document.getElementById("preco").value);
+        var volta = document.getElementById("volta").checked;
 
-                // 6. Calcular o custo total
-                // Fórmula: custo = litros * preço por litro
-                var custo = litros * preco;
+        // 2. Esconder resultado e erro anteriores
+        document.getElementById("resultado").style.display = "none";
+        document.getElementById("erro").style.display = "none";
 
-                // 7. Mostrar o resultado
-                document.getElementById("custo-total").textContent =
-                    "R$ " + custo.toFixed(2).replace(".", ",");
+        // 3. Verificar se os campos foram preenchidos corretamente
+        if (isNaN(distancia) || isNaN(consumo) || isNaN(preco) ||
+          distancia <= 0 || consumo <= 0 || preco <= 0) {
+          document.getElementById("erro").style.display = "block";
+          return; // Para aqui se tiver erro
+        }
 
-                document.getElementById("detalhe-resultado").innerHTML =
-                    "Distância total: <strong>" + distancia.toFixed(0) + " km</strong><br>" +
-                    "Litros necessários: <strong>" + litros.toFixed(2).replace(".", ",") + " L</strong><br>" +
-                    "Preço por litro: <strong>R$ " + preco.toFixed(2).replace(".", ",") + "</strong>";
+        // 4. Se marcou "volta", dobrar a distância
+        if (volta) {
+          distancia = distancia * 2;
+        }
 
-                document.getElementById("resultado").style.display = "block";
-            }
+        // 5. Calcular quantos litros vão ser gastos
+        // Fórmula: litros = distância / consumo
+        var litros = distancia / consumo;
 
-            // ===== FUNÇÃO LIMPAR =====
-            function limpar() {
-                // Apagar todos os campos
-                document.getElementById("distancia").value = "";
-                document.getElementById("consumo").value = "";
-                document.getElementById("preco").value = "";
-                document.getElementById("volta").checked = false;
+        // 6. Calcular o custo total
+        // Fórmula: custo = litros * preço por litro
+        var custo = litros * preco;
 
-                // Esconder resultado e erro
-                document.getElementById("resultado").style.display = "none";
-                document.getElementById("erro").style.display = "none";
-            }
+        // 7. Mostrar o resultado
+        document.getElementById("custo-total").textContent =
+          "R$ " + custo.toFixed(2).replace(".", ",");
+
+        document.getElementById("detalhe-resultado").innerHTML =
+          "Distância total: <strong>" + distancia.toFixed(0) + " km</strong><br>" +
+          "Litros necessários: <strong>" + litros.toFixed(2).replace(".", ",") + " L</strong><br>" +
+          "Preço por litro: <strong>R$ " + preco.toFixed(2).replace(".", ",") + "</strong>";
+
+        document.getElementById("resultado").style.display = "block";
+      }
+
+      // ===== FUNÇÃO LIMPAR =====
+      function limpar() {
+        // Apagar todos os campos
+        document.getElementById("distancia").value = "";
+        document.getElementById("consumo").value = "";
+        document.getElementById("preco").value = "";
+        document.getElementById("volta").checked = false;
+
+        // Esconder resultado e erro
+        document.getElementById("resultado").style.display = "none";
+        document.getElementById("erro").style.display = "none";
+      }
 
 
-        </script>
+    </script>
 </body>
 
 </html>
