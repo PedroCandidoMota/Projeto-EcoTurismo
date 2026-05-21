@@ -5,53 +5,347 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora gastos</title>
+    <!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora gastos</title>
     <style>
-       
-        
-    </style>
+    /* ===== RESET BÁSICO ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px 16px;
+    }
+
+    /* ===== CARD PRINCIPAL ===== */
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 32px;
+      width: 100%;
+      max-width: 620px;
+    }
+
+    /* ===== TÍTULO ===== */
+    .card h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 24px;
+      border-left: 5px solid #3C4122;
+      padding-left: 12px;
+    }
+
+    /* ===== CAMPOS DO FORMULÁRIO ===== */
+    .campos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 160px;
+    }
+
+    .campo label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    /* Linha com input + sufixo (ex: "km") */
+    .input-linha {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid #d0d3e0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fafafa;
+      transition: border-color 0.2s;
+    }
+
+    .input-linha:focus-within {
+      border-color: #3C4122;
+      background: #fff;
+    }
+
+    .input-linha input,
+    .input-linha select {
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 10px 12px;
+      font-size: 1rem;
+
+      color: #1a1a2e;
+    }
+
+    /* Prefixo "R$" */
+    .prefixo {
+      padding: 10px 10px 10px 12px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #888;
+      white-space: nowrap;
+      background: #f0f2f5;
+      border-right: 1.5px solid #d0d3e0;
+    }
+
+    /* Sufixo "km", "l" etc. */
+    .sufixo {
+      padding: 10px 12px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #888;
+      white-space: nowrap;
+      background: #f0f2f5;
+      border-left: 1.5px solid #d0d3e0;
+    }
+
+    /* ===== CHECKBOX ===== */
+    .checkbox-linha {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 24px;
+      cursor: pointer;
+    }
+
+    .checkbox-linha input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #3C4122;
+      cursor: pointer;
+    }
+
+    /* ===== BOTÕES ===== */
+    .botoes {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn-calcular {
+      background: #3C4122;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 28px;
+      font-size: 1rem;
+
+      letter-spacing: 0.5px;
+    }
+
+    .btn-calcular:hover {
+      background: #3C4122;
+    }
+
+    .btn-calcular:active {
+      transform: scale(0.97);
+    }
+
+    .btn-limpar {
+      background: transparent;
+      color: #3C4122;
+      border: 2px solid #3C4122;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 1rem;
+
+    }
+
+    .btn-limpar:hover {
+      background: #3C4122;
+      color: #fff;
+    }
+
+    /* ===== RESULTADO ===== */
+    .resultado {
+      background: #f4f3ff;
+      border: 1.5px solid #c9c6ff;
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: none; /* Fica escondido até calcular */
+    }
+
+    .resultado h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #444;
+      margin-bottom: 12px;
+    }
+
+    .resultado-valor {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #3C4122;
+    }
+
+    .resultado-detalhe {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* ===== ERRO ===== */
+    .erro {
+      background: #fff0f0;
+      border: 1.5px solid #ffb3b3;
+      border-radius: 12px;
+      padding: 14px 20px;
+      color: #c0392b;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <a >Para valores decimais: use "." no lugar de ","</a>
-    </header>
-    <p>
-        <!--TESTE CALCULADORA DE GASTOS -->
-        <label for="distancia">Distância: </label>
-        <input type="text" id="distancia" placeholder="Digite a distância entra sua localização e o destino final: ">
-    </p>
-    <p>
-        <!--TESTE CALCULADORA DE GASTOS -->
+    <div class="card">
+        <h1>⛽ Cálculo do Combustível</h1>
 
-        <label for="preco">Valor combustível: </label>
-        <input type="text" id="preco" placeholder="Digite o preço do combustível na sua região: ">
-    </p>
-    <label for="carro">Gasto do carro(econômico (+-15km/l), intermediário(10km/l) ou alto(6lm/l) ): </label>
-        <input type="text" id="carro" placeholder="Digite o gasto do carro: ">
+        <!-- CAMPOS DE ENTRADA -->
+        <div class="campos">
 
-    <button onclick="calcular()" title="Calcular o valor gasto em combustível: ">
-        Calcular&nbsp;&nbsp;</button>
+            <!-- Distância -->
+            <div class="campo">
+                <label for="distancia">Distância percorrida</label>
+                <div class="input-linha">
+                    <input type="number" id="distancia" placeholder="0" min="0">
+                    <span class="sufixo">km</span>
+                </div>
+            </div>
 
-    <div id="resultado"></div>
-    <div id="mensagem"></div>
-    <script>
-        function calcular() {
+            <!-- Consumo médio -->
+            <div class="campo">
+                <label for="consumo">Consumo médio do veículo</label>
+                <div class="input-linha">
+                    <input type="number" id="consumo" placeholder="0" min="0">
+                         class="sufixo">km / l</span>
+                </div>
+            </div>
 
-            let distancia = document.getElementById("distancia").value;
-            let preco = document.getElementById("preco").value;
-            let totalGasto = distancia * preco;
-            if(carro === "Econômico"){
-                totalGasto = (distancia*preco)/15
-            }else if(carro === "Intermediário"){
-                totalGasto = (distancia*preco)/10
-            }else{
-                totalGasto = (distancia*preco)/6
+            <!-- Preço por litro -->
+            <div class="campo">
+                <label for="preco">Preço por litro</label>
+                <div class="input-linha">
+                    <span class="prefixo">R$</span>
+                    <input type="number" id="preco" placeholder="0,00" min="0" step="0.01">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CHECKBOX VOLTA -->
+        <label class="checkbox-linha">
+            <input type="checkbox" id="volta">
+            Adicionar o caminho de volta
+        </label>
+
+        <!-- BOTÕES -->
+        <div class="botoes">
+            <button class="btn-calcular" onclick="calcular()">CALCULAR</button>
+            <button class="btn-limpar" onclick="limpar()">LIMPAR</button>
+        </div>
+
+        <!-- MENSAGEM DE ERRO -->
+        <div class="erro" id="erro">
+            ⚠️ Preencha todos os campos corretamente antes de calcular.
+        </div>
+
+        <!-- RESULTADO -->
+        <div class="resultado" id="resultado">
+            <h2>💰 Custo total da viagem</h2>
+            <div class="resultado-valor" id="custo-total">R$ 0,00</div>
+            <div class="resultado-detalhe" id="detalhe-resultado"></div>
+        </div>
+        <script>
+            // ===== FUNÇÃO CALCULAR =====
+            function calcular() {
+                // 1. Pegar os valores dos campos
+                var distancia = parseFloat(document.getElementById("distancia").value);
+                var consumo = parseFloat(document.getElementById("consumo").value);
+                var preco = parseFloat(document.getElementById("preco").value);
+                var volta = document.getElementById("volta").checked;
+
+                // 2. Esconder resultado e erro anteriores
+                document.getElementById("resultado").style.display = "none";
+                document.getElementById("erro").style.display = "none";
+
+                // 3. Verificar se os campos foram preenchidos corretamente
+                if (isNaN(distancia) || isNaN(consumo) || isNaN(preco) ||
+                    distancia <= 0 || consumo <= 0 || preco <= 0) {
+                    document.getElementById("erro").style.display = "block";
+                    return; // Para aqui se tiver erro
+                }
+
+                // 4. Se marcou "volta", dobrar a distância
+                if (volta) {
+                    distancia = distancia * 2;
+                }
+
+                // 5. Calcular quantos litros vão ser gastos
+                // Fórmula: litros = distância / consumo
+                var litros = distancia / consumo;
+
+                // 6. Calcular o custo total
+                // Fórmula: custo = litros * preço por litro
+                var custo = litros * preco;
+
+                // 7. Mostrar o resultado
+                document.getElementById("custo-total").textContent =
+                    "R$ " + custo.toFixed(2).replace(".", ",");
+
+                document.getElementById("detalhe-resultado").innerHTML =
+                    "Distância total: <strong>" + distancia.toFixed(0) + " km</strong><br>" +
+                    "Litros necessários: <strong>" + litros.toFixed(2).replace(".", ",") + " L</strong><br>" +
+                    "Preço por litro: <strong>R$ " + preco.toFixed(2).replace(".", ",") + "</strong>";
+
+                document.getElementById("resultado").style.display = "block";
             }
-            let resultadoDiv = document.getElementById("resultado");
 
-            resultadoDiv.innerHTML = `<p>O valor gasto com combustível para percorrer essa distância é: R$${totalGasto}</p>`
-        }
-    </script>
+            // ===== FUNÇÃO LIMPAR =====
+            function limpar() {
+                // Apagar todos os campos
+                document.getElementById("distancia").value = "";
+                document.getElementById("consumo").value = "";
+                document.getElementById("preco").value = "";
+                document.getElementById("volta").checked = false;
+
+                // Esconder resultado e erro
+                document.getElementById("resultado").style.display = "none";
+                document.getElementById("erro").style.display = "none";
+            }
+
+
+        </script>
+</body>
+
+</html>
 </body>
 
 </html>
