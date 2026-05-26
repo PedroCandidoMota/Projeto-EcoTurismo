@@ -59,13 +59,17 @@ body {
    text-align: left;
  }
 
- .container-texto {
-   width: 60vw;
- }
 
  .paragrafo1 {
    display: flex;
    flex-wrap: wrap;
+   flex-direction: row;
+    gap: 20px;
+    width: 100%;
+ }
+
+ .container-texto {
+   flex: 1 1 500px;
  }
 
  .texto {
@@ -75,8 +79,77 @@ body {
  }
 
  .foto {
-   width: 650px;
+   flex: 1 1 400px;
    height: 500px;
    background-color: white;
-   margin-left: 30px;
  }
+
+ @media (max-width: 768px) {
+   .container-nome-projeto h1 {
+      font-size: 4rem;
+      text-align: center;
+   }
+   .linha {
+      margin: 30px auto;
+   }
+   .titulo {
+      font-size: 3.5rem;
+   }
+   .paragrafo1 {
+      flex-direction: column;
+   }
+   .container-texto, .foto {
+      width: 100%;
+   }
+   .texto {
+      font-size: 1.8rem;
+   }
+   .foto {
+      height: 350px;
+   }
+ }
+
+ h2 {
+    color: #3c4122;
+    font-size: 4.5rem;
+    text-align: center;
+ }
+
+ .paragrafo2 {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 100%;
+ }
+  .container-texto2 {
+      width: 62vw;
+      flex: 0 1 500px;
+      padding: 20px;
+      align-self: center;
+  }
+  .container-texto2 .texto {
+      font-size: 2.2rem;
+      color: #3c4122;
+      text-align: center;
+  }
+
+  .container-trilhas {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex: 1 1 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 20px;
+    justify-content: center;
+    height: 40vh;
+    align-items: center;
+  }
+
+  .trilhasImg {
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    border-radius: 10px;
+  }
