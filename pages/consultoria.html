@@ -5,119 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultoria</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <style>
-        .container-texto {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            font-family: sans-serif;
-            max-width: 400px;
-        }
-
-        .container-texto label {
-            font-weight: bold;
-            color: #333;
-        }
-
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-            resize: vertical;
-            /* Permite redimensionar apenas na vertical */
-
-            box-sizing: border-box;
-        }
-
-        /* Efeito ao clicar na caixa de texto */
-        textarea:focus {
-            border-color: #2E6F40;
-            box-shadow: 0 0 5px rgba(19, 80, 29, 0.5);
-            outline: none;
-        }
-
-        .container-form {
-            max-width: 500px;
-            margin: 30px auto;
-            background: none;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        .container-form label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: white;
-            font-size: 25px;
-        }
-
-        .container-form input,
-        .container-form textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-            /* Garante que padding não altere a largura */
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        .container-form input:focus,
-        .container-form textarea:focus {
-            border-color: #2E6F40;
-            outline: none;
-        }
-
-        .container-form button {
-            width: 100%;
-            background-color: #2E6F40;
-            color: white;
-            padding: 14px;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .container-form button:hover {
-            background-color: #2E6F40;
-        }
-        body {
-        background-image: url('../images/bckgroundconsultoria.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-    }
-    </style>
+     <link rel="stylesheet" href="../CSS/consultoria.css">
+    
 </head>
 
 <body>
-    <header>
 
+    <nav>
+        <ul>
+            <li class="hideMobile"><a href="#">Início</a></li>
+            <li class="hideMobile"><a href="#">Guia Trilhas</a></li>
+            <li class="hideMobile"><a href="#">Galeria de trilhas</a></li>
+            <li class="hideMobile"><a href="#">Consultoria</a></li>
+            <li class="hideMobile"><a href="#">Mapa Rotas</a></li>
+            <li class="hideMobile"><a href="#">Landing Page</a></li>
+            <li class="hideMobile"><a href="#">Calculadora</a></li>
+            <li class="hideMobile"><a href="#">Sobre</a></li>
+            <li class="hideDesktop" onclick="showSidebar()"><a href="#">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                    width="24px" fill="#e3e3e3">
+                    <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                </svg>
+            </a></li>
+        </ul>
 
-        
-    </header>
+        <ul class="sidebar">
+            <li onclick="hideSidebar()"><a href="#">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                    width="24px" fill="#e3e3e3">
+                    <path
+                        d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                </svg>
+            </a></li>
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Guia Trilhas</a></li>
+            <li><a href="#">Galeria de trilhas</a></li>
+            <li><a href="#">Consultoria</a></li>
+            <li><a href="#">Mapa Rotas</a></li>
+            <li><a href="#">Landing Page</a></li>
+            <li><a href="#">Calculadora</a></li>
+            <li><a href="#">Sobre</a></li>
+        </ul>
+    </nav>
+
     <form action="#" method="POST">
-        <div class="container-form ">
+        <div class="container-form">
             <p>
-                <label for="nome">Nome: </label><br>
+                <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" placeholder="Informe o nome completo">
             </p>
             <p>
-                <label for="email">Email: </label><br>
+                <label for="email">Email:</label>
                 <input type="text" id="email" name="email" placeholder="Informe o email">
             </p>
-            <label for="telefone">Telefone: </label><br>
-            <input type="text" id="telefone" name="telefone" placeholder="Informe o telefone">
-            <br>
+            <p>
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="telefone" placeholder="Informe o telefone">
             </p>
             <div class="grupo-formulario">
                 <label for="data-nascimento">Data de Nascimento:</label>
@@ -127,12 +70,24 @@
             <br>
             <div class="container-texto">
                 <label for="comentario">Deixe seu comentário:</label>
-                <textarea id="comentario" name="comentario" rows="5" cols="30" placeholder="Escreva aqui..."></textarea>
+                <textarea id="comentario" name="comentario" rows="5" cols="30"
+                    placeholder="Escreva aqui..."></textarea>
             </div>
             <button type="submit">Enviar Mensagem</button>
         </div>
-
     </form>
+
+    <script>
+        function showSidebar() {
+            const sidebar = document.querySelector(".sidebar");
+            sidebar.style.display = "flex";
+        }
+
+        function hideSidebar() {
+            const sidebar = document.querySelector(".sidebar");
+            sidebar.style.display = "none";
+        }
+    </script>
 </body>
 
 </html>
