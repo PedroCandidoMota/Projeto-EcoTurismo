@@ -1,5 +1,5 @@
 html{
-   font-size:  62,5%;
+   font-size:  62.5%;
 }
 body {
    background-color: #ebe9df;
@@ -8,6 +8,7 @@ body {
 
 *{
    overflow-x: hidden;
+   box-sizing: border-box;
 }
 
 .container-imgRolaMoca {
@@ -39,34 +40,18 @@ body {
 }
 
 .container-nome-projeto h1 {
-   font-size: 7rem;
+   font-size: 11rem;
 }
 
- .conteudo-site {
-   position: relative !important;
+.conteudo-site {
+   position: relative;
    background-color: #ebe9df;
    padding: 50px 20px;
-   min-height: 150vh;
-   background-image: url('../images/barbatimaoCopa.png');
-   background-position: top center;
-   background-repeat: no-repeat;
-   min-height: 100vh;
- }
 
-.conteudo-site::after {
-  content: "" !important;
-  position: absolute !important;
-  top: 400px !important; /* Ajuste para a altura exata onde a imagem da copa termina */
-  bottom: 0 !important; 
-  left: 50% !important;
-  transform: translateX(-50%);
-  
-  width: 100% !important; /* Grossura do tronco */
-  background-image: url('../images/barbatimaoTronco.png');
-  background-repeat: repeat-y;
-  background-position: center top;
-  
-  z-index: -1 !important; /* Agora ele ficará atrás do texto, mas visível! */
+   background-image: url('../images/barbatimaoCopa.png'), url('../images/barbatimaoTronco.png');
+   background-position: top center, top center;
+   background-repeat: no-repeat, repeat-y;
+   min-height: 100vh;
 }
 
  .linha {
@@ -79,8 +64,8 @@ body {
  }
 
  .titulo {
-   color: #3c4122;
-   font-size: 5.2rem;
+   color: #000;
+   font-size: 8.6rem;
    text-align: left;
  }
 
@@ -89,8 +74,8 @@ body {
    display: flex;
    flex-wrap: wrap;
    flex-direction: row;
-    gap: 20px;
-    width: 100%;
+   gap: 20px;
+   width: 100%;
  }
 
  .container-texto {
@@ -98,45 +83,15 @@ body {
  }
 
  .texto {
-   font-size: 2.2rem;
-   color: #3c4122;
+   font-size: 3.6rem;
+   color: #000;
    text-align: left;
- }
-
- .foto {
-   flex: 1 1 400px;
-   height: 500px;
-   background-color: white;
- }
-
- @media (max-width: 768px) {
-   .container-nome-projeto h1 {
-      font-size: 4rem;
-      text-align: center;
-   }
-   .linha {
-      margin: 30px auto;
-   }
-   .titulo {
-      font-size: 3.5rem;
-   }
-   .paragrafo1 {
-      flex-direction: column;
-   }
-   .container-texto, .foto {
-      width: 100%;
-   }
-   .texto {
-      font-size: 1.8rem;
-   }
-   .foto {
-      height: 350px;
-   }
+   overflow-wrap: break-word;
  }
 
  h2 {
-    color: #3c4122;
-    font-size: 4.5rem;
+    color: #000;
+    font-size: 8rem;
     text-align: center;
  }
 
@@ -153,8 +108,8 @@ body {
       align-self: center;
   }
   .container-texto2 .texto {
-      font-size: 2.2rem;
-      color: #3c4122;
+      font-size: 3.6rem;
+      color: #000;
       text-align: center;
   }
 
@@ -162,22 +117,29 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    flex: 1 1 300px;
+    flex: 0 1 300px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     gap: 20px;
     justify-content: center;
-    height: 40vh;
+    min-height: 70vh;
     align-items: center;
   }
 
-  .trilhasImg {
-    width: 200px;
-    height: 200px;
-    background-color: black;
-    border-radius: 10px;
-  }
+.trilhasImg {
+   width: 627px;
+   height: 500px;
+   flex: 1 1 300px;
+   border-radius: 10px;
+   overflow: hidden;
+}
+
+.trilhasImg img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
 
 .footer {
    background-color: #8f543e;
@@ -198,9 +160,10 @@ body {
 
 .texto-no-footer {
     color: #fff;
-    font-size: 1.4rem; 
+    font-size: 2.31rem; 
     margin-bottom: 30px;
     line-height: 1.5;
+    overflow-wrap: break-word;
 }
 
 .icones-github {
@@ -216,3 +179,84 @@ body {
 .icon:hover {
     opacity: 0.8;
 }
+
+ @media (max-width: 768px) {
+   .conteudo-site {
+      display: flex;
+      flex-direction: column;
+      gap: 40px; /* Distância igual entre os blocos de conteúdo */
+      padding: 40px 20px;
+   }
+
+   .container-nome-projeto h1 {
+      font-size: 6rem;
+      text-align: center;
+   }
+   .linha {
+      margin-bottom: 40px;
+   }
+   .titulo {
+      font-size: 5rem;
+      margin: 0;
+   }
+   .paragrafo1 {
+      flex-direction: column;
+      height: 1430px;
+      gap: 40px; /* Distância igual entre texto e foto */
+   }
+   
+   .paragrafo2 {
+      flex-direction: column;
+      height: 600px /* Distância igual entre os blocos de texto */
+   }
+
+   .container-texto2 {
+      width: 100%;
+      height: 600px;
+   }
+
+   .texto {
+      font-size: 2.5rem;
+      text-align: center;
+   }
+
+   .texto-no-footer {
+      font-size: 1.5rem;
+   }
+
+   .titulo2 {
+      font-size: 5rem;
+      margin: 0;
+   }
+
+   .titulo3 {
+      font-size: 5rem;
+      margin: 0;
+   }
+
+
+
+   .container-texto2 .texto {
+      font-size: 2.5rem;
+   }
+
+   .container-trilhas {
+      gap: 40px; /* Distância igual entre os itens das trilhas */
+   }
+
+   .trilhasImg {
+      width: 100%;
+      height: auto; /* Remove a altura fixa para não cortar a imagem */
+   }
+
+   .trilhasImg img {
+      height: auto; /* Ajusta a altura proporcionalmente à largura */
+      display: block;
+   }
+
+   .footer {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+   }
+ }
