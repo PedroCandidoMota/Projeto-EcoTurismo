@@ -1,12 +1,12 @@
-html{
-   font-size:  62.5%;
+html {
+   font-size: 62.5%;
 }
 body {
    background-color: #ebe9df;
    margin: 0;
 }
 
-*{
+* {
    overflow-x: hidden;
    box-sizing: border-box;
 }
@@ -27,7 +27,7 @@ body {
    width: 100%;
    height: 100%;
    object-fit: cover;
-   position:absolute;
+   position: absolute;
    top: 0;
    left: 0;
    z-index: -2;
@@ -54,66 +54,65 @@ body {
    min-height: 100vh;
 }
 
- .linha {
+.linha {
    height: 3px;
    width: 100%;
    background-color: #fff;
    z-index: 1;
    position: absolute;
    margin-bottom: 80px;
- }
+}
 
- .titulo {
+.titulo {
    color: #000;
    font-size: 8.6rem;
    text-align: left;
- }
+}
 
-
- .paragrafo1 {
+.paragrafo1 {
    display: flex;
    flex-wrap: wrap;
    flex-direction: row;
    gap: 20px;
    width: 100%;
- }
+}
 
- .container-texto {
+.container-texto {
    flex: 1 1 500px;
- }
+}
 
- .texto {
+.texto {
    font-size: 3.6rem;
    color: #000;
    text-align: left;
    overflow-wrap: break-word;
- }
+}
 
- h2 {
+h2 {
     color: #000;
     font-size: 8rem;
     text-align: center;
- }
+}
 
- .paragrafo2 {
+.paragrafo2 {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     width: 100%;
- }
-  .container-texto2 {
-      width: 62vw;
-      flex: 0 1 500px;
-      padding: 20px;
-      align-self: center;
-  }
-  .container-texto2 .texto {
-      font-size: 3.6rem;
-      color: #000;
-      text-align: center;
-  }
+}
+.container-texto2 {
+    width: 62vw;
+    flex: 0 1 500px;
+    padding: 20px;
+    align-self: center;
+}
+.container-texto2 .texto {
+    font-size: 3.6rem;
+    color: #000;
+    text-align: center;
+}
 
-  .container-trilhas {
+.container-trilhas {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -125,7 +124,7 @@ body {
     justify-content: center;
     min-height: 70vh;
     align-items: center;
-  }
+}
 
 .trilhasImg {
    width: 627px;
@@ -180,11 +179,11 @@ body {
     opacity: 0.8;
 }
 
- @media (max-width: 768px) {
+@media (max-width: 768px) {
    .conteudo-site {
       display: flex;
       flex-direction: column;
-      gap: 40px; /* Distância igual entre os blocos de conteúdo */
+      gap: 40px;
       padding: 40px 20px;
    }
 
@@ -202,12 +201,12 @@ body {
    .paragrafo1 {
       flex-direction: column;
       height: 1430px;
-      gap: 40px; /* Distância igual entre texto e foto */
+      gap: 40px;
    }
    
    .paragrafo2 {
       flex-direction: column;
-      height: 600px /* Distância igual entre os blocos de texto */
+      height: 600px;
    }
 
    .container-texto2 {
@@ -234,23 +233,21 @@ body {
       margin: 0;
    }
 
-
-
    .container-texto2 .texto {
       font-size: 2.5rem;
    }
 
    .container-trilhas {
-      gap: 40px; /* Distância igual entre os itens das trilhas */
+      gap: 40px;
    }
 
    .trilhasImg {
       width: 100%;
-      height: auto; /* Remove a altura fixa para não cortar a imagem */
+      height: auto;
    }
 
    .trilhasImg img {
-      height: auto; /* Ajusta a altura proporcionalmente à largura */
+      height: auto;
       display: block;
    }
 
@@ -259,4 +256,178 @@ body {
       flex-direction: column;
       gap: 40px;
    }
+}
+
+/* =========================================
+   ESTILOS DA NAVBAR PRINCIPAL (DESKTOP)
+   ========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fcfbf8; 
+    padding: 15px 40px;
+    width: 100%;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
+    overflow: visible;
+}
+
+.menu-toggle-checkbox {
+    display: none;
+}
+
+.logo-menu {
+    font-family: Arial, sans-serif;
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: #1b352b; 
+    line-height: 1.1;
+}
+
+.logo-menu span {
+    font-size: 2.2rem;
+}
+
+/* Esconde o menu hambúrguer no Desktop */
+.menu-icon {
+    display: none; 
+    cursor: pointer;
+}
+
+/* Container dos Links Desktop */
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #1b352b;
+    font-family: Arial, sans-serif;
+    font-size: 1.6rem; 
+    transition: opacity 0.2s ease;
+}
+
+.nav-links li a:hover {
+    opacity: 0.7;
+}
+
+.seta {
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.nav-links li a.btn-destaque {
+   background-color: #dce0d1; 
+   padding-right: 12px; 
+   padding-left: 12px;
+   border-radius: 4px;
+   font-weight: 600;
+}
+
+.nav-links li a.btn-destaque:hover {
+    background-color: #cdd2c0;
+    opacity: 1;
+}
+
+/* =========================================
+   ÍCONE HAMBÚRGUER (PURO CSS)
+   ========================================= */
+.icone-hamburguer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 32px;
+    height: 24px; 
+}
+
+.icone-hamburguer span {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background-color: #1b352b; 
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* =========================================
+   MEDIA QUERY: MENU DROPDOWN "CARD" (MOBILE)
+   ========================================= */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    /* Exibe o botão hambúrguer no mobile */
+    .menu-icon {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Transforma a Navbar no Card Flutuante da sua imagem */
+    .nav-links {
+        display: none; /* Oculto por padrão */
+        position: absolute;
+        top: 65px; /* Posiciona logo abaixo da navbar */
+        right: 20px; /* Alinha do lado direito, embaixo do menu */
+        min-width: 220px; /* Define a largura da caixinha */
+        background-color: #ffffff; /* Fundo branco como na imagem */
+        flex-direction: column;
+        padding: 10px 0; /* Espaço em cima e embaixo */
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15); /* Sombra para dar o efeito de flutuar */
+        border-radius: 4px; /* Bordas levemente arredondadas */
+        gap: 0; /* Remove os gaps para tratarmos o espaçamento direto nos links */
+    }
+
+    /* Estilo dos itens da lista dentro da caixinha */
+    .nav-links li {
+        width: 100%;
+        text-align: left; /* Alinhamento à esquerda igual a imagem */
+    }
+
+    /* Estilo dos links para ficarem com área clicável maior */
+    .nav-links li a {
+        display: block;
+        padding: 12px 20px;
+        font-size: 1.6rem;
+    }
+
+    /* Efeito de hover (passar o mouse/tocar) nos itens do dropdown */
+    .nav-links li a:hover {
+        background-color: #f5f5f5;
+        opacity: 1;
+    }
+
+    /* Ajuste específico para o botão "Consultoria" dentro do card flutuante */
+    .nav-links li a.btn-destaque {
+        margin: 5px 20px 10px 20px; 
+        text-align: center;
+        display: block;
+    }
+
+    /* Quando o checkbox for marcado, mostra o menu dropdown */
+    .menu-toggle-checkbox:checked ~ .nav-links {
+        display: flex;
+    }
+
+    /* Animação: Transforma o Hambúrguer num "X" */
+    .menu-toggle-checkbox:checked + .menu-icon .icone-hamburguer span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+    
+    .menu-toggle-checkbox:checked + .menu-icon .icone-hamburguer span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .menu-toggle-checkbox:checked + .menu-icon .icone-hamburguer span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
 }
