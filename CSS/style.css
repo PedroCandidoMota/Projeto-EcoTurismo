@@ -258,9 +258,6 @@ h2 {
    }
 }
 
-/* =========================================
-   ESTILOS DA NAVBAR PRINCIPAL (DESKTOP)
-   ========================================= */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -292,13 +289,11 @@ h2 {
     font-size: 2.2rem;
 }
 
-/* Esconde o menu hambúrguer no Desktop */
 .menu-icon {
     display: none; 
     cursor: pointer;
 }
 
-/* Container dos Links Desktop */
 .nav-links {
     display: flex;
     align-items: center;
@@ -338,9 +333,6 @@ h2 {
     opacity: 1;
 }
 
-/* =========================================
-   ÍCONE HAMBÚRGUER (PURO CSS)
-   ========================================= */
 .icone-hamburguer {
     display: flex;
     flex-direction: column;
@@ -358,67 +350,56 @@ h2 {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* =========================================
-   MEDIA QUERY: MENU DROPDOWN "CARD" (MOBILE)
-   ========================================= */
 @media (max-width: 1024px) {
     .navbar {
         padding: 15px 20px;
     }
 
-    /* Exibe o botão hambúrguer no mobile */
     .menu-icon {
         display: flex;
         align-items: center;
     }
 
-    /* Transforma a Navbar no Card Flutuante da sua imagem */
     .nav-links {
-        display: none; /* Oculto por padrão */
+        display: none;
         position: absolute;
-        top: 65px; /* Posiciona logo abaixo da navbar */
-        right: 20px; /* Alinha do lado direito, embaixo do menu */
-        min-width: 220px; /* Define a largura da caixinha */
-        background-color: #ffffff; /* Fundo branco como na imagem */
+        top: 65px;
+        right: 20px;
+        min-width: 220px;
+        background-color: #ffffff;
         flex-direction: column;
-        padding: 10px 0; /* Espaço em cima e embaixo */
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15); /* Sombra para dar o efeito de flutuar */
-        border-radius: 4px; /* Bordas levemente arredondadas */
-        gap: 0; /* Remove os gaps para tratarmos o espaçamento direto nos links */
+        padding: 10px 0;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15);
+        border-radius: 4px; 
+        gap: 0;
     }
 
-    /* Estilo dos itens da lista dentro da caixinha */
     .nav-links li {
         width: 100%;
-        text-align: left; /* Alinhamento à esquerda igual a imagem */
+        text-align: left; 
     }
 
-    /* Estilo dos links para ficarem com área clicável maior */
     .nav-links li a {
         display: block;
         padding: 12px 20px;
         font-size: 1.6rem;
     }
 
-    /* Efeito de hover (passar o mouse/tocar) nos itens do dropdown */
     .nav-links li a:hover {
         background-color: #f5f5f5;
         opacity: 1;
     }
 
-    /* Ajuste específico para o botão "Consultoria" dentro do card flutuante */
     .nav-links li a.btn-destaque {
         margin: 5px 20px 10px 20px; 
         text-align: center;
         display: block;
     }
 
-    /* Quando o checkbox for marcado, mostra o menu dropdown */
     .menu-toggle-checkbox:checked ~ .nav-links {
         display: flex;
     }
 
-    /* Animação: Transforma o Hambúrguer num "X" */
     .menu-toggle-checkbox:checked + .menu-icon .icone-hamburguer span:nth-child(1) {
         transform: translateY(10px) rotate(45deg);
     }
