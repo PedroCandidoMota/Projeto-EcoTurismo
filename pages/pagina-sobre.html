@@ -1,215 +1,412 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Sobre</title>
-    <link href="../CSS/style.css">
-</head>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre</title>
+
+  <style>
+
     * {
-  margin: 0 ;
-  box-sizing: border-box; 
-}
-    header{
-        background-color: rgb(226, 198, 162);
-        width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
+
     body {
-        background-color: #023504d3;
+      font-family: Arial, sans-serif;
+      background-color: #1e4a0a;
     }
 
-      /* STYLE DO MENU */
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Sofia+Sans:ital,wght@0,1;0,400;0,500;0,600;1,200;1,300&display=swap');
 
-  nav{
-   display: flex;
-   justify-content: flex-end;
 
-  }
-  nav ul{
+    nav {
+      position: fixed;  
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background-color: rgba(12, 61, 2, 0.55);
+      backdrop-filter: blur(6px);
+    }
+
+    nav ul {
+      width: 100%;
+      list-style: none;
+      display: flex;
+      justify-content: flex-end; 
+      align-items: center;
+      flex-wrap: nowrap;        
+    }
+
+    nav li {
+      height: 60px;
+    }
+
+    nav li:first-child {
+      margin-right: auto;
+    }
+
+    nav a {
+      height: 100%;
+      padding: 0 20px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      color: #dcdcdc;
+    }
+
+    .icon {
+      fill: #fff;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 280px;
+      z-index: 999;                        
+      background-color: rgba(12, 61, 2, 0.95);
+      box-shadow: -10px 0 20px rgba(0, 0, 0, 0.3);
+      display: none;                       
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      backdrop-filter: blur(10px);
+    }
+
+    .sidebar li {
+      width: 100%;
+      min-height: 50px;
+    }
+
+    .sidebar a {
+      padding: 14px 24px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background-color: rgba(255,255,255,0.1);
+      color: #a8f0b8;
+    }
+
+    @media (max-width: 800px) {
+      .hideMobile {
+        display: none !important; 
+      }
+    }
+
+    @media (min-width: 801px) {
+      .hideDesktop {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .caixa h2 {
+        font-size: 15px;
+      }
+
+      .slide h3 {
+        font-size: 17px;
+      }
+
+      .slide img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+
+    .pagina {
+      background-image:
+        linear-gradient(rgba(200,150,50,0.4), rgba(30,120,60,0.5)),
+        url(../images/bckgroundSobre.jpg);
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .caixa {
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+  
+      padding-top: 70px;
+    }
+
+    .caixa h2 {
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    }
+
+    .slide {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .slide.ativo {
+      display: flex;
+    }
+
+    .slide img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      margin-bottom: 15px;
+    }
+
+    .slide h3 {
+      color: white;
+      font-size: 20px;
+      margin-bottom: 8px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .slide p {
+      color: white;
+      font-size: 14px;
+      line-height: 1.5;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+      max-width: 320px;
+    }
+
+    .controles {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 25px;
+    }
+
+    .btn-nav {
+      background-color: rgba(255,255,255,0.3);
+      border: 2px solid white;
+      color: white;
+      font-size: 22px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-nav:hover {
+      background-color: rgba(255,255,255,0.6);
+    }
+
+    .dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .dot.ativo {
+      background-color: white;
+    }
+  nav a.btn-destaque {
+  background-color: #dce0d1; 
+   padding-right: 12px; 
+   padding-left: 12px;
+   border-radius: 4px;
+   font-weight: 600;
+}
+
+nav a.btn-destaque:hover {
+    background-color: #cdd2c0;
+}
+.footer {
+   background-color: #8f543e;
+   border-top: 25px solid #6c7634;
+   padding: 40px 20px;
    width: 100%;
-   list-style: none;
-   display: flex;
-   justify-content: flex-end;
-   align-items: center;
-  }
-  nav li{
-   height: 60px;
-  }
- nav li:first-child{
-    margin-right: auto;
+   box-sizing: border-box;
 }
-
-nav a{
-    height: 100%;
-    padding: 0 30px;
-    text-decoration: none;
+  
+.container-footer {
+    max-width: 800px;
+    margin: 0 auto;
     display: flex;
-    align-items: center;
-    color: #fff;
-}
-
-nav a:hover{
-    color: #dcdcdc;
-}
-
-.icon{
-    fill: #fff;
-}
-
-.sidebar{
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 280px;
-    z-index: 999;
-    background-color: rgb(12, 61, 2, 0.2);
-    box-shadow: -10px 0 10px rgba(0,0,0,0.1);
-    display: none;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    backdrop-filter: blur(10px);
+    align-items: center;
+    text-align: center;
 }
 
-
-@media (max-width: 800px){
-    .hideMobile{
-        display: none;
-    }
+.texto-no-footer {
+    color: #fff;
+    font-size: 2.31rem; 
+    margin-bottom: 30px;
+    line-height: 1.5;
+    overflow-wrap: break-word;
 }
 
-@media (min-width: 800px){
-    .hideDesktop{
-        display: none;
-    }
+.icones-github {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
 }
 
-.container-texto {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            font-family: sans-serif;
-            max-width: 400px;
-        }
+.icon {
+    transition: opacity 0.3s ease;
+}
 
-        .container-texto label {
-            font-weight: bold;
-            color: #333;
-        }
+.icon:hover {
+    opacity: 0.8;
+}
 
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-            resize: vertical;
-            box-sizing: border-box;
-        }
+    
+  </style>
 
-        textarea:focus {
-            border-color: #2E6F40;
-            box-shadow: 0 0 5px rgba(19, 80, 29, 0.5);
-            outline: none;
-        }
-
-        .container-form {
-            max-width: 500px;
-            margin: 30px auto;
-            background: none;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .container-form label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: white;
-            font-size: 25px;
-        }
-
-        .container-form input,
-        .container-form textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        .container-form input:focus,
-        .container-form textarea:focus {
-            border-color: #2E6F40;
-            outline: none;
-        }
-
-        .container-form button {
-            width: 100%;
-            background-color: #2E6F40;
-            color: white;
-            padding: 14px;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .container-form button:hover {
-            background-color: #245a34;
-        }
-
-</style>
+</head>
 
 <body>
-    <!-- MENU NAVEGAVEL-->
-    <header>
-        <nav>
-            <ul>
-                <li class="hideMobile"><a href="../index.html">Início</a></li>
-                <li class="hideMobile"><a href="./guia-trilhas.html">Guia Trilhas</a></li>
-                <li class="hideMobile"><a href="./galeria-trilhas.html">Galeria de trilhas</a></li>
-                <li class="hideMobile"><a href="./consultoria.html">Consultoria</a></li>
-                <li class="hideMobile"><a href="./mapa-rotas.html">Mapa Rotas</a></li>
-                <li class="hideMobile"><a href="./landing-page.html">Landing Page</a></li>
-                <li class="hideMobile"><a href="./calculadora-gastos.html">Calculadora</a></li>
-                <li class="hideMobile"><a href="./pagina-sobre.html">Sobre</a></li>
-                <li class="hideDesktop" onclick="showSidebar()"><a href="#">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                            width="24px" fill="#e3e3e3">
-                            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
-                        </svg>
-                    </a></li>
-            </ul>
 
-            <ul class="sidebar">
-                <li onclick="hideSidebar()"><a href="#">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                            width="24px" fill="#e3e3e3">
-                            <path
-                                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-                        </svg>
-                    </a></li>
-                <li><a href="../index.html">Início</a></li>
-                <li><a href="./guia-trilhas.html">Guia Trilhas</a></li>
-                <li><a href="./galeria-trilhas.html">Galeria de trilhas</a></li>
-                <li><a href="./consultoria.html">Consultoria</a></li>
-                <li><a href="./mapa-rotas.html">Mapa Rotas</a></li>
-                <li><a href="./landing-page.html">Landing Page</a></li>
-                <li><a href="./calculadora-gastos.html">Calculadora</a></li>
-                <li><a href="./pagina-sobre.html">Sobre</a></li>
-            </ul>
-        </nav>
-    </header>
+
+  <nav>
+    <ul>
+      <li><a href="../index.html">EcoTurismo</a></li>
+      <li><a href="./guia-trilhas.html">Guia Trilhas</a></li>
+      <li><a href="./galeria-trilhas.html">Galeria</a></li> 
+      <li><a href="./mapa-rotas.html">Mapa Rotas</a></li>
+      <li><a href="./calculadora-gastos.html">Calculadora</a></li>
+      <li><a href="./pagina-sobre.html">Sobre</a></li>
+      <li class="hideMobile"><a href="./landing-page.html" class="btn-destaque">Consultoria</a></li>
+      <li class="hideDesktop" onclick="showSidebar()"><a href="#">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+            fill="#e3e3e3">
+            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+          </svg>
+        </a></li>
+    </ul>
+
+    <ul class="sidebar" id="sidebar">
+
+      <li>
+        <a href="#" onclick="hideSidebar()">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px"
+               viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+            <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+          </svg>
+        </a>
+      </li>
+
+      <li><a href="../index.html">EcoTurismo</a></li>
+      <li><a href="./guia-trilhas.html">Guia Trilhas</a></li>
+      <li><a href="./galeria-trilhas.html">Galeria de trilhas</a></li>
+      <li><a href="./mapa-rotas.html">Mapa Rotas</a></li>
+      <li><a href="./calculadora-gastos.html">Calculadora</a></li>
+      <li><a href="./pagina-sobre.html">Sobre</a></li>
+      <li><a href="./landing-page.html" class="btn-destaque">Consultoria</a></li>
+    </ul>
+  </nav>
+
+  <div class="pagina">
+    <div class="caixa">
+
+      <h2>Projeto realizado por alunos da Fundação Mineira de Educação e Cultura - FUMEC</h2>
+
+      <!-- Slide 1 -->
+      <div class="slide ativo">
+        <img src="../images/ftPedro.jpeg" alt="">
+        <h3>Pedro Cândido</h3>
+        <p>Tech Leader e Dev</p>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <img src="../images/ftMiguel.jpeg" alt="">
+        <h3>Miguel Lopes</h3>
+        <p>Dev e Designer</p>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide">
+       <img src="../images/ftDuda.jpeg" alt="">
+        <h3>Eduarda Peixoto</h3>
+        <p>CopyWriter</p>
+      </div>
+
+      <div class="controles">
+        <button class="btn-nav" id="btnAnterior">&#8249;</button>
+
+        <div class="dots">
+          <div class="dot ativo" onclick="irPara(0)"></div>
+          <div class="dot"       onclick="irPara(1)"></div>
+          <div class="dot"       onclick="irPara(2)"></div>
+        </div>
+
+        <button class="btn-nav" id="btnProximo">&#8250;</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+
+    var slides = document.querySelectorAll('.slide');
+    var dots   = document.querySelectorAll('.dot');
+    var atual  = 0; 
+
+    function mostrarSlide(indice) {
+      for (var i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('ativo');
+        dots[i].classList.remove('ativo');
+      }
+      slides[indice].classList.add('ativo');
+      dots[indice].classList.add('ativo');
+      atual = indice;
+    }
+
+    function irPara(indice) {
+      mostrarSlide(indice);
+    }
+
+    document.getElementById('btnProximo').onclick = function() {
+      var proximo = (atual + 1 >= slides.length) ? 0 : atual + 1;
+      mostrarSlide(proximo);
+    };
+
+    document.getElementById('btnAnterior').onclick = function() {
+      var anterior = (atual - 1 < 0) ? slides.length - 1 : atual - 1;
+      mostrarSlide(anterior);
+    };
+
+    function showSidebar() {
+      document.getElementById('sidebar').style.display = 'flex';
+    }
+
+    function hideSidebar() {
+      document.getElementById('sidebar').style.display = 'none';
+    }
+
+  </script>
+  
 </body>
-
 </html>

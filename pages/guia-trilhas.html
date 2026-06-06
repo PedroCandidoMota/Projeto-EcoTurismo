@@ -1,200 +1,350 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia Trilhas</title>
-<style>
-      /* STYLE DO MENU */
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Sofia+Sans:ital,wght@0,1;0,400;0,500;0,600;1,200;1,300&display=swap');
+    <title>Guia de Trilhas</title>
 
-  nav{
-   display: flex;
-   justify-content: flex-end;
+    <style>
 
-  }
-  nav ul{
-   width: 100%;
-   list-style: none;
-   display: flex;
-   justify-content: flex-end;
-   align-items: center;
-  }
-  nav li{
-   height: 60px;
-  }
- nav li:first-child{
-    margin-right: auto;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-nav a{
-    height: 100%;
-    padding: 0 30px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    color: #fff;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0ebe3;
+        }
 
-nav a:hover{
-    color: #dcdcdc;
-}
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(12, 45, 5, 0.92);
+        }
 
-.icon{
-    fill: #fff;
-}
-
-.sidebar{
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 280px;
-    z-index: 999;
-    background-color: rgb(12, 61, 2, 0.2);
-    box-shadow: -10px 0 10px rgba(0,0,0,0.1);
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    backdrop-filter: blur(10px);
-}
-
-
-@media (max-width: 800px){
-    .hideMobile{
-        display: none;
-    }
-}
-
-@media (min-width: 800px){
-    .hideDesktop{
-        display: none;
-    }
-}
-
-.container-texto {
+        nav ul {
+            list-style: none;
             display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 16px;
+        }
+
+        nav ul li:first-child {
+            margin-right: auto;
+        }
+
+        nav li {
+            height: 62px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            padding: 0 18px;
+            text-decoration: none;
+            color: white;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        nav a:hover {
+            color: #a8f0b8;
+        }
+
+        .icon {
+            fill: white;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 260px;
+            z-index: 999;
+            background-color: rgba(12, 45, 5, 0.97);
+            display: none;
             flex-direction: column;
-            gap: 8px;
-            font-family: sans-serif;
-            max-width: 400px;
         }
 
-        .container-texto label {
-            font-weight: bold;
-            color: #333;
-        }
-
-        textarea {
+        .sidebar li {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-            resize: vertical;
-            box-sizing: border-box;
+            min-height: 50px;
         }
 
-        textarea:focus {
-            border-color: #2E6F40;
-            box-shadow: 0 0 5px rgba(19, 80, 29, 0.5);
-            outline: none;
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            padding: 14px 28px;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            height: 100%;
         }
 
-        .container-form {
-            max-width: 500px;
-            margin: 30px auto;
-            background: none;
-            padding: 30px;
+        .sidebar a:hover {
+            background-color: rgba(255,255,255,0.1);
+            color: #a8f0b8;
+        }
+
+        @media (max-width: 800px) {
+            .hideMobile {
+                display: none !important;
+            }
+        }
+
+        @media (min-width: 801px) {
+            .hideDesktop {
+                display: none !important;
+            }
+        }
+
+        .titulo-pagina {
+            text-align: center;
+            padding: 40px 20px 30px;
+        }
+
+        .titulo-pagina h1 {
+            font-size: 2rem;
+            color: #1a4a0e;
+        }
+
+        .titulo-pagina p {
+            color: #666;
+            margin-top: 6px;
+        }
+
+        .container-tabela {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
             border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
         }
 
-        .container-form label {
-            display: block;
+        thead th {
+            background-color: #3d6b2e;
+            color: white;
+            font-size: 0.9rem;
             font-weight: bold;
-            margin-bottom: 8px;
-            color: white;
-            font-size: 25px;
+            padding: 16px 20px;
+            text-align: left;
+            border-right: 1px solid rgba(255,255,255,0.2);
         }
 
-        .container-form input,
-        .container-form textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 16px;
-            transition: border-color 0.3s;
+        thead th:last-child {
+            border-right: none;
         }
 
-        .container-form input:focus,
-        .container-form textarea:focus {
-            border-color: #2E6F40;
-            outline: none;
+        tbody td {
+            padding: 14px 20px;
+            font-size: 0.9rem;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
         }
 
-        .container-form button {
-            width: 100%;
-            background-color: #2E6F40;
-            color: white;
-            padding: 14px;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        tbody td:last-child {
+            border-right: none;
         }
 
-        .container-form button:hover {
-            background-color: #245a34;
+        tbody tr:last-child td {
+            border-bottom: none;
         }
 
-</style>
+        tbody tr:hover {
+            background-color: #f5f9f3;
+        }
+
+        .cidade {
+            color: #1a4a0e;
+            font-weight: bold;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: bold;
+        }
+
+        .facil   { background-color: #d4edda; color: #1a5c2a; }
+        .medio   { background-color: #fff3cd; color: #7a5c00; }
+        .dificil { background-color: #f8d7da; color: #721c24; }
+
+        nav a.btn-destaque {
+            background-color: #dce0d1;
+            padding-right: 12px;
+            padding-left: 12px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        nav a.btn-destaque:hover {
+            background-color: #cdd2c0;
+        }
+
+    </style>
+
 </head>
 
 <body>
-    <!-- MENU NAVEGAVEL-->
-    <nav>
-        <ul>
-            <li class="hideMobile"><a href="../index.html">Início</a></li>
-            <li class="hideMobile"><a href="./guia-trilhas.html">Guia Trilhas</a></li>
-            <li class="hideMobile"><a href="./galeria-trilhas.html">Galeria de trilhas</a></li>
-            <li class="hideMobile"><a href="./consultoria.html">Consultoria</a></li>
-            <li class="hideMobile"><a href="./mapa-rotas.html">Mapa Rotas</a></li>
-            <li class="hideMobile"><a href="./landing-page.html">Landing Page</a></li>
-            <li class="hideMobile"><a href="./calculadora-gastos.html">Calculadora</a></li>
-            <li class="hideMobile"><a href="./pagina-sobre.html">Sobre</a></li>
-            <li class="hideDesktop" onclick="showSidebar()"><a href="#">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                        width="24px" fill="#e3e3e3">
-                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
-                    </svg>
-                </a></li>
-        </ul>
 
-        <ul class="sidebar">
-            <li onclick="hideSidebar()"><a href="#">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                        width="24px" fill="#e3e3e3">
-                        <path
-                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+  <nav>
+    <ul>
+      <li><a href="../index.html">EcoTurismo</a></li>
+      <li><a href="./guia-trilhas.html">Guia Trilhas</a></li>
+      <li><a href="./galeria-trilhas.html">Galeria</a></li>
+      <li><a href="./mapa-rotas.html">Mapa Rotas</a></li>
+      <li><a href="./calculadora-gastos.html">Calculadora</a></li>
+      <li><a href="./pagina-sobre.html">Sobre</a></li>
+      <li class="hideMobile"><a href="./landing-page.html" class="btn-destaque">Consultoria</a></li>
+      <li class="hideDesktop" onclick="showSidebar()"><a href="#">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+          </svg>
+        </a></li>
+    </ul>
+
+        <ul class="sidebar" id="sidebar">
+            <li>
+                <a href="#" onclick="hideSidebar()">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
                     </svg>
-                </a></li>
+                </a>
+            </li>
             <li><a href="../index.html">Início</a></li>
             <li><a href="./guia-trilhas.html">Guia Trilhas</a></li>
-            <li><a href="./galeria-trilhas.html">Galeria de trilhas</a></li>
-            <li><a href="./consultoria.html">Consultoria</a></li>
-            <li><a href="./mapa-rotas.html">Mapa Rotas</a></li>
-            <li><a href="./landing-page.html">Landing Page</a></li>
+            <li><a href="./galeria-trilhas.html">Galeria</a></li>
+            <li><a href="./mapa-rotas.html">Mapa</a></li>
             <li><a href="./calculadora-gastos.html">Calculadora</a></li>
             <li><a href="./pagina-sobre.html">Sobre</a></li>
+            <li><a href="./landing-page.html" class="btn-destaque">Consultoria</a></li>
         </ul>
     </nav>
-</body>
 
+    <div class="titulo-pagina">
+        <h1>Guia de Trilhas</h1>
+        <p>Região Metropolitana de Belo Horizonte</p>
+    </div>
+
+    <div class="container-tabela">
+        <table>
+            <thead>
+                <tr>
+                    <th>Trilha / Atração</th>
+                    <th>Cidade</th>
+                    <th>Distância</th>
+                    <th>Dificuldade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cachoeira do Couto</td>
+                    <td class="cidade">Betim</td>
+                    <td>7 km</td>
+                    <td><span class="badge facil">Fácil</span></td>
+                </tr>
+                <tr>
+                    <td>Trilha Esmeraldas Bike Park</td>
+                    <td class="cidade">Esmeraldas</td>
+                    <td>9 km</td>
+                    <td><span class="badge medio">Médio</span></td>
+                </tr>
+                <tr>
+                    <td>Serra do Elefante</td>
+                    <td class="cidade">Mateus Leme</td>
+                    <td>6 km</td>
+                    <td><span class="badge medio">Médio</span></td>
+                </tr>
+                <tr>
+                    <td>Cachoeira — Mateus Leme</td>
+                    <td class="cidade">Mateus Leme</td>
+                    <td>3 km</td>
+                    <td><span class="badge facil">Fácil</span></td>
+                </tr>
+                <tr>
+                    <td>Parque Estadual do Sumidouro</td>
+                    <td class="cidade">Pedro Leopoldo</td>
+                    <td>2,3 km</td>
+                    <td><span class="badge facil">Fácil</span></td>
+                </tr>
+                <tr>
+                    <td>Poço Azul</td>
+                    <td class="cidade">Lagoa Santa</td>
+                    <td>1,5 km</td>
+                    <td><span class="badge facil">Fácil</span></td>
+                </tr>
+                <tr>
+                    <td>Loop x Grota Waterfall</td>
+                    <td class="cidade">Taquaraçu de Minas</td>
+                    <td>18 km</td>
+                    <td><span class="badge dificil">Difícil</span></td>
+                </tr>
+                <tr>
+                    <td>Travessia Sabará x Raposos</td>
+                    <td class="cidade">Sabará</td>
+                    <td>11,5 km</td>
+                    <td><span class="badge dificil">Difícil</span></td>
+                </tr>
+                <tr>
+                    <td>Retiro das Pedras</td>
+                    <td class="cidade">Nova Lima</td>
+                    <td>8 km</td>
+                    <td><span class="badge medio">Médio</span></td>
+                </tr>
+                <tr>
+                    <td>Cachoeira da Ostra</td>
+                    <td class="cidade">Nova Lima</td>
+                    <td>6 km</td>
+                    <td><span class="badge facil">Fácil</span></td>
+                </tr>
+                <tr>
+                    <td>Serra da Gandarela</td>
+                    <td class="cidade">Rio Acima</td>
+                    <td>38 km</td>
+                    <td><span class="badge dificil">Difícil</span></td>
+                </tr>
+                <tr>
+                    <td>Forte de Brumadinho</td>
+                    <td class="cidade">Brumadinho</td>
+                    <td>12 km</td>
+                    <td><span class="badge facil">Fácil</span></td>
+                </tr>
+                <tr>
+                    <td>Cachoeira Rio das Pedras</td>
+                    <td class="cidade">Santana do Riacho</td>
+                    <td>8 km</td>
+                    <td><span class="badge dificil">Difícil</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function showSidebar() {
+            document.getElementById('sidebar').style.display = 'flex';
+        }
+        function hideSidebar() {
+            document.getElementById('sidebar').style.display = 'none';
+        }
+    </script>
+
+</body>
 </html>

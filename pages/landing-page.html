@@ -5,46 +5,381 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
+
+    <style>
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .fundo {
+            min-height: 100vh;
+            padding: 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            
+            background-color: #1e4a0a;
+        }
+
+        .fundo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 55%;       
+            height: 100%;
+            background-image: url('../images/cacheiraconsultoria.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+        }
+
+       
+        .fundo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                #1e4a0a 0%,         
+                #1e4a0a 35%,         
+                rgba(30, 74, 10, 0.75) 55%, 
+                rgba(30, 74, 10, 0.30) 100% 
+            );
+            z-index: 1;
+        }
+
+       
+        .conteudo {
+            position: relative;
+            z-index: 2;
+            max-width: 580px;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            line-height: 1.15;
+        }
+
+        .destaque {
+            color: #C0DD97;
+            font-style: italic;
+        }
+
+        p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 500px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .botao-principal {
+            background-color: white;
+            color: #1e4a0a;
+            border: none;
+            padding: 15px 25px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .botao-principal:hover {
+            background-color: #d0e8b0;
+        }
+
+        .botao-secundario {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 15px 25px;
+            font-size: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .botao-secundario:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        @media (max-width: 600px) {
+            .fundo::before {
+                display: none;
+            }
+            .fundo::after {
+                background: #1e4a0a;
+            }
+            h1 {
+                font-size: 34px;
+            }
+            .botao-principal,
+            .botao-secundario {
+                display: block;
+                width: 100%;
+                margin-bottom: 12px;
+                text-align: center;
+                box-sizing: border-box;
+            }
+        }
+
+        .fundo-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 100;
+        }
+
+        .caixa-modal {
+            background-color: white;
+            color: black;
+            width: 90%;
+            max-width: 450px;
+            margin: 60px auto;
+            padding: 35px;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .caixa-modal h2 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .caixa-modal .subtitulo {
+            font-size: 13px;
+            color: gray;
+            margin-bottom: 20px;
+        }
+
+        .fechar {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: gray;
+        }
+
+        .fechar:hover { color: #333; }
+
+        /* campos do formulario */
+        .campo {
+            margin-bottom: 14px;
+        }
+
+        .campo label {
+            display: block;
+            font-size: 12px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .campo input,
+        .campo textarea,
+        .campo select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .campo input:focus,
+        .campo textarea:focus,
+        .campo select:focus {
+            border-color: #2E6F40;
+            outline: none;
+        }
+
+        .dois-campos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 480px) {
+            .dois-campos {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* botao de enviar */
+        .botao-enviar {
+            width: 100%;
+            background-color: #2E6F40;
+            color: white;
+            border: none;
+            padding: 13px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 6px;
+        }
+
+        .botao-enviar:hover {
+            background-color: #1e4a0a;
+        }
+
+        /* mensagem de sucesso */
+        .mensagem-sucesso {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .mensagem-sucesso h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .mensagem-sucesso p {
+            font-size: 13px;
+            color: gray;
+            max-width: 100%;
+        }
+
+        .icone-ok {
+            font-size: 44px;
+            color: #2E6F40;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- MENU NAVEGAVEL-->
-    <nav>
-        <ul>
-            <li class="hideMobile"><a href="../index.html">Início</a></li>
-            <li class="hideMobile"><a href="./guia-trilhas.html">Guia Trilhas</a></li>
-            <li class="hideMobile"><a href="./galeria-trilhas.html">Galeria de trilhas</a></li>
-            <li class="hideMobile"><a href="./consultoria.html">Consultoria</a></li>
-            <li class="hideMobile"><a href="./mapa-rotas.html">Mapa Rotas</a></li>
-            <li class="hideMobile"><a href="./landing-page.html">Landing Page</a></li>
-            <li class="hideMobile"><a href="./calculadora-gastos.html">Calculadora</a></li>
-            <li class="hideMobile"><a href="./pagina-sobre.html">Sobre</a></li>
-            <li class="hideDesktop" onclick="showSidebar()"><a href="#">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                        width="24px" fill="#e3e3e3">
-                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
-                    </svg>
-                </a></li>
-        </ul>
 
-        <ul class="sidebar">
-            <li onclick="hideSidebar()"><a href="#">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                        width="24px" fill="#e3e3e3">
-                        <path
-                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-                    </svg>
-                </a></li>
-            <li><a href="../index.html">Início</a></li>
-            <li><a href="./guia-trilhas.html">Guia Trilhas</a></li>
-            <li><a href="./galeria-trilhas.html">Galeria de trilhas</a></li>
-            <li><a href="./consultoria.html">Consultoria</a></li>
-            <li><a href="./mapa-rotas.html">Mapa Rotas</a></li>
-            <li><a href="./landing-page.html">Landing Page</a></li>
-            <li><a href="./calculadora-gastos.html">Calculadora</a></li>
-            <li><a href="./pagina-sobre.html">Sobre</a></li>
-        </ul>
-    </nav>
+    <div class="fundo">
+
+        <div class="conteudo">
+
+            <h1>Conecte-se com<br>a natureza de <span class="destaque">verdade</span></h1>
+
+            <p>
+                Trilhas guiadas, experiências imersivas e turismo de baixo impacto na
+                Região Metropolitana de Belo Horizonte. Venha descobrir o que a Mata
+                Atlântica tem a te oferecer.
+            </p>
+
+            <div>
+                <button class="botao-principal" onclick="abrirModal()">
+                    Solicitar consultoria gratuita
+                </button>
+
+                <a href="../index.html" class="botao-secundario">
+                    Página inicial
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- modal -->
+    <div class="fundo-modal" id="fundoModal" onclick="fecharSeClicarFora(event)">
+        <div class="caixa-modal">
+
+            <button class="fechar" onclick="fecharModal()">✕</button>
+
+            <div id="formulario">
+                <h2>Fale com um especialista</h2>
+                <p class="subtitulo">Retorno em até 24h para planejar sua aventura.</p>
+
+                <div class="dois-campos">
+                    <div class="campo">
+                        <label>Nome completo</label>
+                        <input type="text" placeholder="Seu nome">
+                    </div>
+                    <div class="campo">
+                        <label>Telefone</label>
+                        <input type="text" placeholder="(31) 9 0000-0000">
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label>E-mail</label>
+                    <input type="email" placeholder="seu@email.com">
+                </div>
+
+                <div class="dois-campos">
+                    <div class="campo">
+                        <label>Data de nascimento</label>
+                        <input type="date">
+                    </div>
+                    <div class="campo">
+                        <label>Tamanho do grupo</label>
+                        <select>
+                            <option value="">Selecione</option>
+                            <option>Individual</option>
+                            <option>2 a 5 pessoas</option>
+                            <option>6 a 15 pessoas</option>
+                            <option>16+ pessoas</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label>Comentário ou dúvida</label>
+                    <textarea rows="3" placeholder="Qual trilha te interessa? Conte mais..."></textarea>
+                </div>
+
+                <button class="botao-enviar" onclick="enviarFormulario()">
+                    Enviar mensagem
+                </button>
+            </div>
+
+            <div class="mensagem-sucesso" id="sucesso">
+                <div class="icone-ok">✔</div>
+                <h3>Mensagem enviada!</h3>
+                <p>Nossa equipe entrará em contato em breve para planejar sua aventura.</p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        function abrirModal() {
+            document.getElementById("fundoModal").style.display = "block";
+        }
+
+        function fecharModal() {
+            document.getElementById("fundoModal").style.display = "none";
+            document.getElementById("formulario").style.display = "block";
+            document.getElementById("sucesso").style.display = "none";
+        }
+
+        function fecharSeClicarFora(event) {
+            if (event.target.id === "fundoModal") {
+                fecharModal();
+            }
+        }
+
+        function enviarFormulario() {
+            document.getElementById("formulario").style.display = "none";
+            document.getElementById("sucesso").style.display = "block";
+        }
+    </script>
+
 </body>
-
 </html>

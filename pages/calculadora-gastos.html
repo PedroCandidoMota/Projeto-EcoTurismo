@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora gastos</title>
-  
+
   <style>
     * {
       margin: 0;
@@ -13,16 +13,113 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f2f5;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-      padding: 40px 16px;
+    /* STYLE DO MENU */
+    .logo {
+      font-weight: bold;
+      font-size: 1.6rem;
     }
 
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background-color: rgba(12, 61, 2, 0.55);
+      backdrop-filter: blur(6px);
+    }
+
+    nav ul {
+      width: 100%;
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+    nav li {
+      height: 60px;
+    }
+
+    nav li:first-child {
+      margin-right: auto;
+    }
+
+    nav a {
+      height: 100%;
+      padding: 0 20px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      color: #dcdcdc;
+    }
+
+    .icon {
+      fill: #fff;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 280px;
+      z-index: 999;
+      background-color: rgba(12, 61, 2, 0.85);
+      box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      backdrop-filter: blur(10px);
+    }
+
+    .sidebar li {
+      width: 100%;
+    }
+
+    .sidebar a {
+      padding: 0 24px;
+      font-size: 1rem;
+    }
+
+   @media (max-width: 800px) {
+  .hideMobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 801px) {
+  .hideDesktop {
+    display: none !important;
+  }
+
+    }
+
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+
+      padding: 80px 16px 40px;
+      background-image: url('../images/bckgroundcalculadora.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+    }
+
+    /* ===== CARD ===== */
     .card {
       background: #ffffff;
       border-radius: 16px;
@@ -62,7 +159,6 @@
       margin-bottom: 6px;
     }
 
-
     .input-linha {
       display: flex;
       align-items: center;
@@ -85,8 +181,8 @@
       background: transparent;
       padding: 10px 12px;
       font-size: 1rem;
-
       color: #1a1a2e;
+      width: 100%;
     }
 
     .prefixo {
@@ -140,12 +236,12 @@
       border-radius: 8px;
       padding: 12px 28px;
       font-size: 1rem;
-
+      cursor: pointer;
       letter-spacing: 0.5px;
     }
 
     .btn-calcular:hover {
-      background: #3C4122;
+      background: #2e3119;
     }
 
     .btn-calcular:active {
@@ -159,7 +255,7 @@
       border-radius: 8px;
       padding: 12px 24px;
       font-size: 1rem;
-
+      cursor: pointer;
     }
 
     .btn-limpar:hover {
@@ -173,7 +269,6 @@
       border-radius: 12px;
       padding: 20px 24px;
       display: none;
-
     }
 
     .resultado h2 {
@@ -206,178 +301,34 @@
       font-weight: 600;
       display: none;
     }
-
-    /*===== Background (APENAS TESTE CASO O GRUPO PREFIRA COLOQUE OUTRA IMAGEM DEPOIS!!!!!!!!)====*/
-    body {
-      background-image: url('../images/bckgroundcalculadora.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-position: center;
-    }
-    /* STYLE DO MENU */
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Sofia+Sans:ital,wght@0,1;0,400;0,500;0,600;1,200;1,300&display=swap');
-
-  nav{
-   display: flex;
-   justify-content: flex-end;
-
-  }
-  nav ul{
-   width: 100%;
-   list-style: none;
-   display: flex;
-   justify-content: flex-end;
-   align-items: center;
-  }
-  nav li{
-   height: 60px;
-  }
- nav li:first-child{
-    margin-right: auto;
+    nav a.btn-destaque {
+  background-color: #dce0d1; 
+   padding-right: 12px; 
+   padding-left: 12px;
+   border-radius: 4px;
+   font-weight: 600;
 }
 
-nav a{
-    height: 100%;
-    padding: 0 30px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    color: #fff;
+nav a.btn-destaque:hover {
+    background-color: #cdd2c0;
 }
-
-nav a:hover{
-    color: #dcdcdc;
-}
-
-.icon{
-    fill: #fff;
-}
-
-.sidebar{
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 280px;
-    z-index: 999;
-    background-color: rgb(12, 61, 2, 0.2);
-    box-shadow: -10px 0 10px rgba(0,0,0,0.1);
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    backdrop-filter: blur(10px);
-}
-
-
-@media (max-width: 800px){
-    .hideMobile{
-        display: none;
-    }
-}
-
-@media (min-width: 800px){
-    .hideDesktop{
-        display: none;
-    }
-}
-
-.container-texto {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            font-family: sans-serif;
-            max-width: 400px;
-        }
-
-        .container-texto label {
-            font-weight: bold;
-            color: #333;
-        }
-
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-            resize: vertical;
-            box-sizing: border-box;
-        }
-
-        textarea:focus {
-            border-color: #2E6F40;
-            box-shadow: 0 0 5px rgba(19, 80, 29, 0.5);
-            outline: none;
-        }
-
-        .container-form {
-            max-width: 500px;
-            margin: 30px auto;
-            background: none;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .container-form label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: white;
-            font-size: 25px;
-        }
-
-        .container-form input,
-        .container-form textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        .container-form input:focus,
-        .container-form textarea:focus {
-            border-color: #2E6F40;
-            outline: none;
-        }
-
-        .container-form button {
-            width: 100%;
-            background-color: #2E6F40;
-            color: white;
-            padding: 14px;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .container-form button:hover {
-            background-color: #245a34;
-        }
-
+    
   </style>
+
 </head>
 
 <body>
-  <!-- MENU NAVEGAVEL-->
+
+
   <nav>
     <ul>
-      <li class="hideMobile"><a href="../index.html">Início</a></li>
-      <li class="hideMobile"><a href="./guia-trilhas.html">Guia Trilhas</a></li>
-      <li class="hideMobile"><a href="./galeria-trilhas.html">Galeria de trilhas</a></li>
-      <li class="hideMobile"><a href="./consultoria.html">Consultoria</a></li>
-      <li class="hideMobile"><a href="./mapa-rotas.html">Mapa Rotas</a></li>
-      <li class="hideMobile"><a href="./landing-page.html">Landing Page</a></li>
-      <li class="hideMobile"><a href="./calculadora-gastos.html">Calculadora</a></li>
-      <li class="hideMobile"><a href="./pagina-sobre.html">Sobre</a></li>
+      <li><a href="../index.html">EcoTurismo</a></li>
+      <li><a href="./guia-trilhas.html">Guia Trilhas</a></li>
+      <li><a href="./galeria-trilhas.html">Galeria</a></li> 
+      <li><a href="./mapa-rotas.html">Mapa Rotas</a></li>
+      <li><a href="./calculadora-gastos.html">Calculadora</a></li>
+      <li><a href="./pagina-sobre.html">Sobre</a></li>
+      <li class="hideMobile"><a href="./landing-page.html" class="btn-destaque">Consultoria</a></li>
       <li class="hideDesktop" onclick="showSidebar()"><a href="#">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
             fill="#e3e3e3">
@@ -386,7 +337,7 @@ nav a:hover{
         </a></li>
     </ul>
 
-    <ul class="sidebar">
+    <ul class="sidebar" id="sidebar">
       <li onclick="hideSidebar()"><a href="#">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
             fill="#e3e3e3">
@@ -394,16 +345,17 @@ nav a:hover{
               d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
           </svg>
         </a></li>
-      <li><a href="../index.html">Início</a></li>
+      <li><a href="../index.html">EcoTurismo</a></li>
       <li><a href="./guia-trilhas.html">Guia Trilhas</a></li>
-      <li><a href="./galeria-trilhas.html">Galeria de trilhas</a></li>
-      <li><a href="./consultoria.html">Consultoria</a></li>
+      <li><a href="./galeria-trilhas.html">Galeria</a></li> 
       <li><a href="./mapa-rotas.html">Mapa Rotas</a></li>
-      <li><a href="./landing-page.html">Landing Page</a></li>
       <li><a href="./calculadora-gastos.html">Calculadora</a></li>
       <li><a href="./pagina-sobre.html">Sobre</a></li>
+      <li><a href="./landing-page.html" class="btn-destaque">Consultoria</a></li>
     </ul>
   </nav>
+
+
 
   <div class="card">
     <h1>⛽ Cálculo do Combustível</h1>
@@ -411,7 +363,7 @@ nav a:hover{
     <!-- CAMPOS DE ENTRADA -->
     <div class="campos">
 
-      <!-- Distância -->
+
       <div class="campo">
         <label for="distancia">Distância percorrida</label>
         <div class="input-linha">
@@ -420,16 +372,16 @@ nav a:hover{
         </div>
       </div>
 
-      <!-- Consumo médio -->
+
       <div class="campo">
         <label for="consumo">Consumo médio do veículo</label>
         <div class="input-linha">
           <input type="number" id="consumo" placeholder="0" min="0">
-          class="sufixo">km / l</span>
+          <span class="sufixo">km / l</span>
         </div>
       </div>
 
-      <!-- Preço por litro -->
+
       <div class="campo">
         <label for="preco">Preço por litro</label>
         <div class="input-linha">
@@ -466,37 +418,35 @@ nav a:hover{
     <script>
       // ===== FUNÇÃO CALCULAR =====
       function calcular() {
-        // 1. Pegar os valores dos campos
+
         var distancia = parseFloat(document.getElementById("distancia").value);
         var consumo = parseFloat(document.getElementById("consumo").value);
         var preco = parseFloat(document.getElementById("preco").value);
         var volta = document.getElementById("volta").checked;
 
-        // 2. Esconder resultado e erro anteriores
+
         document.getElementById("resultado").style.display = "none";
         document.getElementById("erro").style.display = "none";
 
-        // 3. Verificar se os campos foram preenchidos corretamente
+
         if (isNaN(distancia) || isNaN(consumo) || isNaN(preco) ||
           distancia <= 0 || consumo <= 0 || preco <= 0) {
           document.getElementById("erro").style.display = "block";
-          return; // Para aqui se tiver erro
+          return;
         }
 
-        // 4. Se marcou "volta", dobrar a distância
+
         if (volta) {
           distancia = distancia * 2;
         }
 
-        // 5. Calcular quantos litros vão ser gastos
-        // Fórmula: litros = distância / consumo
         var litros = distancia / consumo;
 
-        // 6. Calcular o custo total
-        // Fórmula: custo = litros * preço por litro
+
+
         var custo = litros * preco;
 
-        // 7. Mostrar o resultado
+
         document.getElementById("custo-total").textContent =
           "R$ " + custo.toFixed(2).replace(".", ",");
 
@@ -510,22 +460,26 @@ nav a:hover{
 
       // ===== FUNÇÃO LIMPAR =====
       function limpar() {
-        // Apagar todos os campos
+
         document.getElementById("distancia").value = "";
         document.getElementById("consumo").value = "";
         document.getElementById("preco").value = "";
         document.getElementById("volta").checked = false;
 
-        // Esconder resultado e erro
+
         document.getElementById("resultado").style.display = "none";
         document.getElementById("erro").style.display = "none";
       }
+      // ====FUNÇÃO MENU NAV ====//
+      function showSidebar() {
+        document.getElementById('sidebar').style.display = 'flex';
+      }
 
+      function hideSidebar() {
+        document.getElementById('sidebar').style.display = 'none';
+      }
 
     </script>
-</body>
-
-</html>
 </body>
 
 </html>
