@@ -1,221 +1,389 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa Rotas</title>
+    <title>EcoTurismo - Mapa de Rotas Interativo</title>
     
-    <!-- Teste Hover -->
     <style>
-        a img:hover {
-            width: 70px;
-            height: 70px;
-            top: 1100px;
-            left: 1095px;
+        html {
+            font-size: 62.5%;
         }
-        /* TESTE MENU*/
-        body{
-            background-color: black;
-        }
-          /* STYLE DO MENU */
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Sofia+Sans:ital,wght@0,1;0,400;0,500;0,600;1,200;1,300&display=swap');
 
-  nav{
-   display: flex;
-   justify-content: flex-end;
-
-  }
-  nav ul{
-   width: 100%;
-   list-style: none;
-   display: flex;
-   justify-content: flex-end;
-   align-items: center;
-  }
-  nav li{
-   height: 60px;
-  }
- nav li:first-child{
-    margin-right: auto;
-}
-
-nav a{
-    height: 100%;
-    padding: 0 30px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    color: #fff;
-}
-
-nav a:hover{
-    color: #dcdcdc;
-}
-
-.icon{
-    fill: #fff;
-}
-
-.sidebar{
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 280px;
-    z-index: 999;
-    background-color: rgb(12, 61, 2, 0.2);
-    box-shadow: -10px 0 10px rgba(0,0,0,0.1);
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    backdrop-filter: blur(10px);
-}
-
-
-@media (max-width: 800px){
-    .hideMobile{
-        display: none;
-    }
-}
-
-@media (min-width: 800px){
-    .hideDesktop{
-        display: none;
-    }
-}
-
-.container-texto {
+        body {
+            background-color: #ebe9df;
+            margin: 0;
+            font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            font-family: sans-serif;
-            max-width: 400px;
+            min-height: 100vh;
+            background-image: url('../images/Ipe-rosa.png');
+            background-repeat: no-repeat;
+            background-position: top right;
+            background-size: auto 1200px;
         }
 
-        .container-texto label {
-            font-weight: bold;
-            color: #333;
+        @media (max-width: 500px) {
+            body {
+                background-size: auto 1000px;
+            }
         }
 
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-            resize: vertical;
+        * {
             box-sizing: border-box;
         }
 
-        textarea:focus {
-            border-color: #2E6F40;
-            box-shadow: 0 0 5px rgba(19, 80, 29, 0.5);
-            outline: none;
+        html, body {
+            overflow-x: hidden;
         }
 
-        .container-form {
-            max-width: 500px;
-            margin: 30px auto;
-            background: none;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .container-form label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: white;
-            font-size: 25px;
-        }
-
-        .container-form input,
-        .container-form textarea {
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fcfbf8; 
+            padding: 15px 40px;
             width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 16px;
-            transition: border-color 0.3s;
+            position: fixed; 
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            border-bottom: 2px solid #a6a394; 
+            overflow: visible; 
         }
 
-        .container-form input:focus,
-        .container-form textarea:focus {
-            border-color: #2E6F40;
-            outline: none;
+        .menu-toggle-checkbox {
+            display: none;
         }
 
-        .container-form button {
-            width: 100%;
-            background-color: #2E6F40;
-            color: white;
-            padding: 14px;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
+        .logo-menu {
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: #1b352b; 
+            line-height: 1.1;
+        }
+
+        .logo-menu span {
+            font-size: 2.2rem;
+        }
+
+        .menu-icon {
+            display: none; 
             cursor: pointer;
-            transition: background-color 0.3s;
         }
 
-        .container-form button:hover {
-            background-color: #245a34;
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
         }
 
+        .nav-links li a {
+            text-decoration: none;
+            color: #1b352b;
+            font-size: 1.6rem; 
+            transition: opacity 0.2s ease;
+        }
+
+        .nav-links li a:hover {
+            opacity: 0.7;
+        }
+
+        .seta {
+            font-size: 1.2rem;
+            vertical-align: middle;
+        }
+
+        .nav-links li a.btn-destaque {
+            background-color: #dce0d1; 
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .nav-links li a.btn-destaque:hover {
+            background-color: #cdd2c0;
+            opacity: 1;
+        }
+
+        .icone-hamburguer {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 32px;
+            height: 24px; 
+        }
+
+        .icone-hamburguer span {
+            display: block;
+            height: 4px;
+            width: 100%;
+            background-color: #1b352b; 
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        @media (max-width: 1024px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            .menu-icon {
+                display: flex;
+                align-items: center;
+            }
+            .nav-links {
+                display: none; 
+                position: absolute;
+                top: 65px; 
+                right: 20px; 
+                min-width: 220px; 
+                background-color: #ffffff; 
+                flex-direction: column;
+                padding: 10px 0; 
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15); 
+                border-radius: 4px; 
+                gap: 0; 
+            }
+            .nav-links li {
+                width: 100%;
+                text-align: left; 
+            }
+            .nav-links li a {
+                display: block;
+                padding: 12px 20px;
+                font-size: 1.6rem;
+            }
+            .nav-links li a:hover {
+                background-color: #f5f5f5;
+                opacity: 1;
+            }
+            .nav-links li a.btn-destaque {
+                margin: 5px 20px 10px 20px; 
+                text-align: center;
+                display: block;
+            }
+            .menu-toggle-checkbox:checked ~ .nav-links {
+                display: flex;
+            }
+            .menu-toggle-checkbox:checked + .menu-icon .icone-hamburguer span:nth-child(1) {
+                transform: translateY(10px) rotate(45deg);
+            }
+            .menu-toggle-checkbox:checked + .menu-icon .icone-hamburguer span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle-checkbox:checked + .menu-icon .icone-hamburguer span:nth-child(3) {
+                transform: translateY(-10px) rotate(-45deg);
+            }
+        }
+
+        .container-mapa-interativo {
+            flex: 1; 
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            gap: 40px; 
+            max-width: 1200px; 
+            margin: 140px auto 80px auto; 
+            padding: 0 40px;
+            width: 100%;
+        }
+
+        .mapa {
+            width: 100%; 
+            height: 700px; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15); 
+        }
+
+        .mapa iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block; 
+        }
+
+        .secao-botoes {
+            display: flex;
+            flex-direction: row; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 20px; 
+            width: 100%;
+        }
+
+        .btn-cidade {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 60px;
+            padding: 0 30px; 
+            background-color: #ebe9df;
+            color: #000000;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+            border-radius: 12px; 
+            transition: all 0.2s ease;
+            flex: 1 1 200px; 
+            color: #1b352b;
+            flex: 0 0 calc((100% - 40px) / 3);
+        }
+
+        .btn-cidade:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px); 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .container-mapa-interativo {
+                padding: 120px 20px 60px 20px;
+                gap: 25px;
+            }
+
+            .mapa {
+                height: 400px;
+            }
+
+            .secao-botoes {
+                gap: 15px;
+            }
+
+            .btn-cidade {
+                flex: 1 1 calc(50% - 15px);
+                height: 50px;
+                font-size: 1.3rem;
+                padding: 0 10px;
+                max-width: none;
+            }
+        }
+
+        .footer {
+            background-color: #8f543e;
+            border-top: 25px solid #6c7634;
+            padding: 40px 20px;
+            width: 100%;
+        }
+          
+        .container-footer {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .texto-no-footer {
+            color: #fff;
+            font-size: 2.31rem; 
+            margin-bottom: 30px;
+            line-height: 1.5;
+            overflow-wrap: break-word;
+        }
+
+        .icones-github {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .icon {
+            transition: opacity 0.3s ease;
+        }
+
+        .icon:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .texto-no-footer {
+                font-size: 1.5rem;
+            }
+            .footer {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <!-- MENU NAVEGAVEL-->
-    <nav>
-        <ul>
-            <li class="hideMobile"><a href="../index.html">Início</a></li>
-            <li class="hideMobile"><a href="./guia-trilhas.html">Guia Trilhas</a></li>
-            <li class="hideMobile"><a href="./galeria-trilhas.html">Galeria de trilhas</a></li>
-            <li class="hideMobile"><a href="./consultoria.html">Consultoria</a></li>
-            <li class="hideMobile"><a href="./mapa-rotas.html">Mapa Rotas</a></li>
-            <li class="hideMobile"><a href="./landing-page.html">Landing Page</a></li>
-            <li class="hideMobile"><a href="./calculadora-gastos.html">Calculadora</a></li>
-            <li class="hideMobile"><a href="./pagina-sobre.html">Sobre</a></li>
-            <li class="hideDesktop" onclick="showSidebar()"><a href="#">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                        width="24px" fill="#e3e3e3">
-                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
-                    </svg>
-                </a></li>
-        </ul>
+    
+    <nav class="navbar">
+        <div class="logo-menu">
+            EcoTurismo<br><span>Minas Gerais&reg;</span>
+        </div>
 
-        <ul class="sidebar">
-            <li onclick="hideSidebar()"><a href="#">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                        width="24px" fill="#e3e3e3">
-                        <path
-                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-                    </svg>
-                </a></li>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+        
+        <label for="menu-toggle" class="menu-icon">
+            <div class="icone-hamburguer">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </label>
+
+        <ul class="nav-links">
             <li><a href="../index.html">Início</a></li>
-            <li><a href="./guia-trilhas.html">Guia Trilhas</a></li>
-            <li><a href="./galeria-trilhas.html">Galeria de trilhas</a></li>
-            <li><a href="./consultoria.html">Consultoria</a></li>
-            <li><a href="./mapa-rotas.html">Mapa Rotas</a></li>
-            <li><a href="./landing-page.html">Landing Page</a></li>
+            <li><a href="./guia-trilhas.html">Guia Trilhas <span class="seta">&#709;</span></a></li>
+            <li><a href="./galeria-trilhas.html">Galeria <span class="seta">&#709;</span></a></li>
+            <li><a href="./mapa-rotas.html">Mapa <span class="seta">&#709;</span></a></li>
             <li><a href="./calculadora-gastos.html">Calculadora</a></li>
             <li><a href="./pagina-sobre.html">Sobre</a></li>
+            <li><a href="./consultoria.html" class="btn-destaque">Consultoria</a></li>
         </ul>
     </nav>
-    <!-- Código Exemplo -->
-    <div id="Um-nome-ai" style="position: relative;">
-        <img src="../images/regiaometropolitana.png" alt="Região Metropolitana de Bh" id="img-1"
-            style="position: absolute; z-index: 2;">
-        <a href="https://www.w3schools.com/css/css_position.asp" target="_blank"><img src="../images/pin.png" alt="Pin"
-                style="width: 50px; height: 50pxpx; top: 1160px; left: 1095px; position: absolute; z-index: 2;"
-                id="img-2"></a> <!-- Isso é apenas um exemplo, remover posteriormente -->
-    </div>
+    
+    <main class="container-mapa-interativo">
+        
+        <div class="mapa">
+            <iframe name="frame-mapa" src="https://maps.google.com/maps?q=Parque+Estadual+Serra+do+Rola-Moca&t=&z=14&ie=UTF8&iwloc=near&output=embed?ie=UTF8&iwloc=near&output=embed" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <div class="secao-botoes">
+            <a href="https://www.google.com/maps/d/u/0/embed?mid=1725A0B7O3qBeNkcNqJJRDPSvIYe9Ffc&ehbc=2E312F&noprof=1" target="frame-mapa" class="btn-cidade">FORTE DE BRUMADINHO</a>
+            
+            <a href="https://www.google.com/maps/d/u/0/embed?mid=1mAZz9SWQX6Bw8zpXPY76UEgp1uXEjHE&ehbc=2E312F&noprof=1" target="frame-mapa" class="btn-cidade">RETIRO DAS PEDRAS E CACHOEIRA DAS OSTRAS</a>
+            
+            <a href="https://www.google.com/maps/d/u/0/embed?mid=18_nrMa_ljoxcw8eKPoITqMVHAToE-_I&ehbc=2E312F&noprof=1" target="frame-mapa" class="btn-cidade">TRAVESSIA SABÁRA X RAPOSOS</a>
+            
+            <a href="https://www.google.com/maps/d/u/0/embed?mid=1OfX-bTRWb3wlT7aQsHvOgEltckN769c&ehbc=2E312F&noprof=1" target="frame-mapa" class="btn-cidade">LAGOA SANTA – CENTRO E LAGOA CENTRAL</a>
+
+            <a href="https://www.google.com/maps/d/u/0/embed?mid=15QNoUbDUg0tbgd1gS_TDmyHwRWHd-Fc&ehbc=2E312F&noprof=1" target="frame-mapa" class="btn-cidade">CIRCUITO TAQUARAÇU DE MINAS - CACHOEIRA DE GROTA</a>
+
+            <a href="https://www.google.com/maps/d/u/0/embed?mid=1ANSEtx9LyKZJcDCsRpP-tjBt46UJGLM&ehbc=2E312F&noprof=1" target="frame-mapa" class="btn-cidade">TRILHA ESMERALDAS – ESMERALDAS BIKE PARK</a>
+
+            <a href="https://www.google.com/maps/d/u/0/embed?mid=1JrjbZ3YEBPZIk_kgVvHgZelnGgDewSE&ehbc=2E312F&noprof=1" target="frame-mapa" class="btn-cidade">CACHOEIRA DO COUTO – SARAIVA (BETIM)</a>
+            
+            <a href="https://www.google.com/maps/d/u/0/embed?mid=1O5vPZVvOjuESHZU4nbS_sjEj124qlpA&ehbc=2E312F&noprof=1" target="frame-mapa" class="btn-cidade">CACHOEIRA RIO DE PEDRA</a>
+
+            <a href="https://www.google.com/maps/d/u/0/embed?mid=1BQIxj3K35ouJBNmwSHt2s_Aq9mgEBII&ehbc=2E312F&noprof=1" target="frame-mapa" class="btn-cidade">SERRA DO ELEFANTE E CACHOEIRA - MATEUS LEME</a>
+        </div>
+
+    </main>
+    
+    <footer class="footer">
+        <div class="container-footer">
+            <p class="texto-no-footer">
+                DESENVOLVIDO POR PEDRO, MIGUEL E EDUARDA <br><br>
+            </p>
+        </div>
+        <div class="icones-github">
+            <a href="#" target="_blank" title="GitHub Eduarda"><img src="../images/icons8-github-60.png" alt="Icone GitHub" class="icon"></a> 
+            <a href="#" target="_blank" title="GitHub Pedro"><img src="../images/icons8-github-60.png" alt="Icone GitHub" class="icon"></a>
+            <a href="#" target="_blank" title="GitHub Miguel"><img src="../images/icons8-github-60.png" alt="Icone GitHub" class="icon"></a>
+        </div>
+    </footer>
 
 </body>
-
 </html>
