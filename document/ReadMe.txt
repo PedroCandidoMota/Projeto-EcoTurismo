@@ -1,28 +1,24 @@
 Nome do projeto: EcoTurismo
 Link da publicação do projeto: N/A
 
-Participantes e papéis: 
-Eduarda Peixoto Dantas (Copywriter)
-Miguel Lopes de Souza Kroeff (Designer / Dev )
-Pedro Cândido Vieira Mota (Tech-lead / Dev)
+PARTICIPANTES DO GRUPO E PAPÉis: 
+Eduarda Peixoto Dantas (Dev)
+Miguel Lopes de Souza Kroeff (Designer / Copywriter)
+Pedro Cândido Vieira Mota (Tech-lead / dev)
 
-Objetivo principal do projeto: O objetivo principal deste projeto é desenvolver uma plataforma web funcional e interativa que promova o ecoturismo em Belo Horizonte e região, 
-incentivando a preservação ambiental e o apoio à economia local por meio de práticas sustentáveis. Ao facilitar o acesso a informações sobre trilhas e áreas de conservação,
-o site busca conscientizar o público sobre a importância da biodiversidade, oferecendo uma alternativa de lazer que promove o bem-estar físico e mental em contato direto com a natureza mineira.
+OBJETIVO PRINCIPAL DO PROJETO: 
+O objetivo principal deste projeto é desenvolver uma plataforma web funcional e interativa que promova o ecoturismo em Belo Horizonte e região, incentivando a preservação ambiental e o apoio à economia local por meio de práticas sustentáveis. Ao facilitar o acesso a informações sobre trilhas e áreas de conservação, o site busca conscientizar o público sobre a importância da biodiversidade, oferecendo uma alternativa de lazer que promove o bem-estar físico e mental em contato direto com a natureza mineira.
 
-Descrição do projeto: 
+DESCRIÇÃO RESUMIDA DO PROJETO: 
+O projeto EcoTurismo Minas Gerais nasceu de uma vontade muito genuína de conectar as pessoas com a natureza de um jeito simples, seguro e totalmente sustentável. Nós, alunos da Fundação Mineira de Educação e Cultura (FUMEC), Pedro Cândido, Miguel Lopes e Eduarda Peixoto, nos juntamos para criar uma plataforma que funcionasse como um verdadeiro guia amigável para quem deseja explorar as belezas escondidas na Região Metropolitana de Belo Horizonte. A nossa ideia principal é mostrar que você não precisa viajar para longe ou gastar horas no trânsito para encontrar paisagens incríveis, cachoeiras de água limpa, cantinhos de paz e trilhas cheias de cultura e história. Mais do que apenas listar lugares legais para visitar no fim de semana, nós queremos formar uma grande comunidade de pessoas apaixonadas pelo ecoturismo e que compreendem a importância de cuidar do nosso meio ambiente para as próximas gerações. Acreditamos profundamente que o contato direto com a natureza traz benefícios enormes e transformadores para a nossa saúde física e mental, além de ajudar a movimentar a economia e valorizar as comunidades locais que vivem ao redor desses parques. Com este site, nosso maior sonho é dar aquele empurrãozinho de coragem que faltava para você sair da rotina estressante da cidade, respirar um ar mais puro, pisar na terra e ir criar memórias inesquecíveis pelas montanhas e pelos vales maravilhosos do nosso estado.
 
-Finalidade: A finalidade deste projeto é democratizar o acesso a opções de lazer ecológicas em Minas Gerais por meio de uma plataforma web funcional. O objetivo é facilitar o ingresso da população em atividades de diversão sustentável,
-unindo a acessibilidade tecnológica à conscientização ambiental e ao fortalecimento do vínculo entre a comunidade e o patrimônio natural regional.
+Para garantir que essa experiência seja a melhor possível e sem nenhuma dor de cabeça, nós pensamos com muito carinho em ferramentas práticas e tecnológicas para ajudar no planejamento de cada etapa da sua aventura. No nosso site, você encontra um Guia de Trilhas muito detalhado, que organiza os caminhos por nível de dificuldade, cidade e distância percorrida, sendo o ponto de partida perfeito tanto para famílias que buscam um passeio tranquilo quanto para os trilheiros mais experientes que procuram grandes desafios. Também montamos uma Galeria de Imagens rica e cativante para você já ir sentindo o clima do lugar e se inspirar muito antes mesmo de começar a arrumar a sua mochila. O grande destaque do nosso projeto é o Mapa de Rotas Interativo, que é diretamente integrado com o Wikiloc para mostrar o trajeto exato da caminhada, dando muito mais segurança, previsibilidade e confiança para o seu passeio. E como sabemos que a organização financeira é uma parte essencial em qualquer viagem, criamos uma Calculadora de Gastos muito fácil e intuitiva de usar: basta colocar a distância, o consumo médio do seu carro e o valor atual do combustível para saber exatamente quanto a viagem vai custar no seu bolso. Juntando tudo isso com a nossa área de Consultoria especializada, o nosso grande objetivo é dar todo o suporte e o acolhimento necessários para que destinos maravilhosos, como Nova Lima, Sabará, Brumadinho e Lagoa Santa, sejam explorados com segurança, muito respeito à nossa natureza e diversão garantida para todos.
 
-Participação:
+FINALIDADE:
+A finalidade deste projeto é democratizar o acesso a opções de lazer ecológicas em Minas Gerais por meio de uma plataforma web funcional. O objetivo é facilitar o ingresso da população em atividades de diversão sustentável, unindo a acessibilidade tecnológica à conscientização ambiental e ao fortalecimento do vínculo entre a comunidade e o patrimônio natural regional.
 
-Aplicação do projeto:
+PARTICIPAÇÃO: 
+Sim, todos os membros do grupo participaram. Miguel fez o desenvolvimento das páginas Calculadora de Gastos, Landing Page com o formulário, página Sobre e o Guia de Trilhas. Enquanto Pedro ficou responsável pelo design e desenvolvimento das páginas Index, Galeria de Trilhas e Mapa de Rotas. Já Eduarda ficou responsável por todos os textos do site, além de selecionar todas as trilhas e imagens do projeto.
 
-Pag. 1: Tabela com guia de trilhas
-Pag. 2: Galeria de trilhas c/ fotos etc
-Pag. 3: Formulário com a consultória
-Pag. 4: Mapas com rotas das trilhas
-Pag. 5: 
-Pag. 6: Calculadora de gastos
-Pag. 7: Página sobre
+APLICAÇÃO DO PROJETO:
+Sim. Os conceitos teóricos de HTML, CSS e design responsivo aprendidos na disciplina de Introdução ao Desenvolvimento Web foram totalmente aplicados na construção da plataforma EcoTurismo. Isso beneficia a comunidade ao democratizar o acesso a roteiros ecológicos seguros, fomentando o turismo sustentável e a valorização ambiental e econômica da região.
