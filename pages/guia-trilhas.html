@@ -6,6 +6,9 @@
     <title>Guia de Trilhas</title>
 
     <style>
+        html {
+            font-size: 62.5%;
+        }
 
         * {
             margin: 0;
@@ -16,115 +19,189 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f0ebe3;
+            font-size: 1.6rem;
+            background-image: url('../images/Canela-de-ema-parteCima.png');
+            background-repeat: no-repeat;
+            background-position: right center;
         }
 
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background-color: rgba(12, 45, 5, 0.92);
+        html, body {
+            overflow-x: hidden;
         }
 
-        nav ul {
-            list-style: none;
+        .navbar {
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
-            padding: 0 16px;
-        }
-
-        nav ul li:first-child {
-            margin-right: auto;
-        }
-
-        nav li {
-            height: 62px;
-            display: flex;
-            align-items: center;
-        }
-
-        nav a {
-            padding: 0 18px;
-            text-decoration: none;
-            color: white;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            height: 100%;
-        }
-
-        nav a:hover {
-            color: #a8f0b8;
-        }
-
-        .icon {
-            fill: white;
-        }
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            right: 0;
-            height: 100vh;
-            width: 260px;
-            z-index: 999;
-            background-color: rgba(12, 45, 5, 0.97);
-            display: none;
-            flex-direction: column;
-        }
-
-        .sidebar li {
+            background-color: #fcfbf8; 
+            padding: 15px 40px;
             width: 100%;
-            min-height: 50px;
+            position: fixed; 
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
+            overflow: visible;
         }
 
-        .sidebar a {
+        .menu-toggle-checkbox {
+            display: none;
+        }
+
+        .logo-menu {
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: #1b352b; 
+            line-height: 1.1;
+        }
+
+        .logo-menu span {
+            font-size: 2.2rem;
+        }
+
+        .menu-icon {
+            display: none; 
+            cursor: pointer;
+        }
+
+        .nav-links {
             display: flex;
             align-items: center;
-            padding: 14px 28px;
-            color: white;
+            list-style: none;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
             text-decoration: none;
-            font-size: 1rem;
-            height: 100%;
+            color: #1b352b;
+            font-size: 1.6rem; 
+            transition: opacity 0.2s ease;
         }
 
-        .sidebar a:hover {
-            background-color: rgba(255,255,255,0.1);
-            color: #a8f0b8;
+        .nav-links li a:hover {
+            opacity: 0.7;
         }
 
-        @media (max-width: 800px) {
-            .hideMobile {
-                display: none !important;
+        .seta {
+            font-size: 1.2rem;
+            vertical-align: middle;
+        }
+
+        .nav-links li a.btn-destaque {
+            background-color: #dce0d1; 
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .nav-links li a.btn-destaque:hover {
+            background-color: #cdd2c0;
+            opacity: 1;
+        }
+
+        .icone-hamburguer {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 32px;
+            height: 24px; 
+        }
+
+        .icone-hamburguer span {
+            display: block;
+            height: 4px;
+            width: 100%;
+            background-color: #1b352b; 
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        @media (max-width: 1024px) {
+            .navbar {
+                padding: 15px 20px;
             }
-        }
 
-        @media (min-width: 801px) {
-            .hideDesktop {
-                display: none !important;
+            .menu-icon {
+                display: flex;
+                align-items: center;
+            }
+
+            .nav-links {
+                display: none; 
+                position: absolute;
+                top: 65px; 
+                right: 20px; 
+                min-width: 220px; 
+                background-color: #ffffff; 
+                flex-direction: column;
+                padding: 10px 0; 
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15); 
+                border-radius: 4px; 
+                gap: 0; 
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: left; 
+            }
+
+            .nav-links li a {
+                display: block;
+                padding: 12px 20px;
+                font-size: 1.6rem;
+            }
+
+            .nav-links li a:hover {
+                background-color: #f5f5f5;
+                opacity: 1;
+            }
+
+            .nav-links li a.btn-destaque {
+                margin: 5px 20px 10px 20px; 
+                text-align: center;
+                display: block;
+            }
+
+            .menu-toggle-checkbox:checked ~ .nav-links {
+                display: flex;
+            }
+
+            .menu-toggle-checkbox:checked + .menu-icon .icone-hamburguer span:nth-child(1) {
+                transform: translateY(10px) rotate(45deg);
+            }
+            
+            .menu-toggle-checkbox:checked + .menu-icon .icone-hamburguer span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle-checkbox:checked + .menu-icon .icone-hamburguer span:nth-child(3) {
+                transform: translateY(-10px) rotate(-45deg);
             }
         }
 
         .titulo-pagina {
             text-align: center;
-            padding: 40px 20px 30px;
+            padding: 120px 20px 30px;
         }
 
         .titulo-pagina h1 {
-            font-size: 2rem;
+            font-size: 3.6rem;
             color: #1a4a0e;
         }
 
         .titulo-pagina p {
             color: #666;
-            margin-top: 6px;
+            font-size: 1.8rem;
+            margin-top: 10px;
         }
 
         .container-tabela {
             max-width: 900px;
             margin: 0 auto 60px;
             padding: 0 20px;
-            overflow-x: auto;
+            overflow-x: auto; 
         }
 
         table {
@@ -134,12 +211,13 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+            min-width: 600px;
         }
 
         thead th {
             background-color: #3d6b2e;
             color: white;
-            font-size: 0.9rem;
+            font-size: 1.6rem;
             font-weight: bold;
             padding: 16px 20px;
             text-align: left;
@@ -152,7 +230,7 @@
 
         tbody td {
             padding: 14px 20px;
-            font-size: 0.9rem;
+            font-size: 1.5rem;
             color: #333;
             border-bottom: 1px solid #ddd;
             border-right: 1px solid #ddd;
@@ -177,26 +255,79 @@
 
         .badge {
             display: inline-block;
-            padding: 3px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.78rem;
+            font-size: 1.3rem;
             font-weight: bold;
         }
 
+        /* Cores de Dificuldade */
         .facil   { background-color: #d4edda; color: #1a5c2a; }
         .medio   { background-color: #fff3cd; color: #7a5c00; }
         .dificil { background-color: #f8d7da; color: #721c24; }
 
-        nav a.btn-destaque {
-            background-color: #dce0d1;
-            padding-right: 12px;
-            padding-left: 12px;
-            border-radius: 4px;
-            font-weight: 600;
+        .footer {
+            background-color: #8f543e;
+            border-top: 25px solid #6c7634;
+            padding: 40px 20px;
+            width: 100%;
+        }
+        
+        .lobo-guara-img {
+            position: absolute;
+            left: 10%;
+            width: 150px;
+            z-index: 10;
+            transform: translateY(-125%);
         }
 
-        nav a.btn-destaque:hover {
-            background-color: #cdd2c0;
+        .container-footer {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .texto-no-footer {
+            color: #fff;
+            font-size: 2.31rem; 
+            margin-bottom: 30px;
+            line-height: 1.5;
+            overflow-wrap: break-word;
+        }
+
+        .icones-github {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .icon {
+            transition: opacity 0.3s ease;
+        }
+
+        .icon:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .texto-no-footer {
+                font-size: 1.5rem;
+            }
+            
+            .footer {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 1380px) {
+            .lobo-guara-img {
+                display: none;
+            }
         }
 
     </style>
@@ -205,34 +336,26 @@
 
 <body>
 
-  <nav>
-    <ul>
-      <li><a href="../index.html">EcoTurismo</a></li>
-      <li><a href="./guia-trilhas.html">Guia Trilhas</a></li>
-      <li><a href="./galeria-trilhas.html">Galeria</a></li>
-      <li><a href="./mapa-rotas.html">Mapa Rotas</a></li>
-      <li><a href="./calculadora-gastos.html">Calculadora</a></li>
-      <li><a href="./pagina-sobre.html">Sobre</a></li>
-      <li class="hideMobile"><a href="./landing-page.html" class="btn-destaque">Consultoria</a></li>
-      <li class="hideDesktop" onclick="showSidebar()"><a href="#">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
-          </svg>
-        </a></li>
-    </ul>
+    <nav class="navbar">
+        <div class="logo-menu">
+            EcoTurismo<br><span>Minas Gerais&reg;</span>
+        </div>
 
-        <ul class="sidebar" id="sidebar">
-            <li>
-                <a href="#" onclick="hideSidebar()">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
-                    </svg>
-                </a>
-            </li>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+        
+        <label for="menu-toggle" class="menu-icon">
+            <div class="icone-hamburguer">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </label>
+
+        <ul class="nav-links">
             <li><a href="../index.html">Início</a></li>
-            <li><a href="./guia-trilhas.html">Guia Trilhas</a></li>
-            <li><a href="./galeria-trilhas.html">Galeria</a></li>
-            <li><a href="./mapa-rotas.html">Mapa</a></li>
+            <li><a href="./guia-trilhas.html">Guia Trilhas <span class="seta">&#709;</span></a></li>
+            <li><a href="./galeria-trilhas.html">Galeria <span class="seta">&#709;</span></a></li>
+            <li><a href="./mapa-rotas.html">Mapa <span class="seta">&#709;</span></a></li>
             <li><a href="./calculadora-gastos.html">Calculadora</a></li>
             <li><a href="./pagina-sobre.html">Sobre</a></li>
             <li><a href="./landing-page.html" class="btn-destaque">Consultoria</a></li>
@@ -336,15 +459,22 @@
             </tbody>
         </table>
     </div>
-
-    <script>
-        function showSidebar() {
-            document.getElementById('sidebar').style.display = 'flex';
-        }
-        function hideSidebar() {
-            document.getElementById('sidebar').style.display = 'none';
-        }
-    </script>
+    
+    <footer class="footer">
+        <div class="lobo-guara">
+            <img src="../images/lobo-guara.png" alt="Lobo Guara" class="lobo-guara-img">
+        </div>
+        <div class="container-footer">
+            <p class="texto-no-footer">
+                DESENVOLVIDO POR PEDRO, MIGUEL E EDUARDA <br><br>
+            </p>
+        </div>
+        <div class="icones-github">
+            <a href="https://github.com/PedroCandidoMota" target="_blank" title="GitHub Pedro"><img src="../images/icons8-github-60.png" alt="Icone GitHub" class="icon"></a> 
+            <a href="https://github.com/Miguel-Kroeff" target="_blank" title="GitHub Miguel"><img src="../images/icons8-github-60.png" alt="Icone GitHub" class="icon"></a>
+            <a href="https://github.com/eduardapdantas-oss" target="_blank" title="GitHub Eduarda"><img src="../images/icons8-github-60.png" alt="Icone GitHub" class="icon"></a>
+        </div>
+    </footer>
 
 </body>
 </html>

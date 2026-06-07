@@ -4,114 +4,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora gastos</title>
+  <title>Calculadora de Gastos - EcoTurismo</title>
 
   <style>
+
+    html {
+      font-size: 62.5%; 
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* STYLE DO MENU */
-    .logo {
-      font-weight: bold;
-      font-size: 1.6rem;
+    html, body {
+      overflow-x: hidden;
     }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 100;
-      background-color: rgba(12, 61, 2, 0.55);
-      backdrop-filter: blur(6px);
-    }
-
-    nav ul {
-      width: 100%;
-      list-style: none;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      flex-wrap: nowrap;
-    }
-
-    nav li {
-      height: 60px;
-    }
-
-    nav li:first-child {
-      margin-right: auto;
-    }
-
-    nav a {
-      height: 100%;
-      padding: 0 20px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      font-size: 0.9rem;
-    }
-
-    nav a:hover {
-      color: #dcdcdc;
-    }
-
-    .icon {
-      fill: #fff;
-    }
-
-    .sidebar {
-      position: fixed;
-      top: 0;
-      right: 0;
-      height: 100vh;
-      width: 280px;
-      z-index: 999;
-      background-color: rgba(12, 61, 2, 0.85);
-      box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
-      display: none;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-      backdrop-filter: blur(10px);
-    }
-
-    .sidebar li {
-      width: 100%;
-    }
-
-    .sidebar a {
-      padding: 0 24px;
-      font-size: 1rem;
-    }
-
-   @media (max-width: 800px) {
-  .hideMobile {
-    display: none !important;
-  }
-}
-
-@media (min-width: 801px) {
-  .hideDesktop {
-    display: none !important;
-  }
-
-    }
-
 
     body {
       font-family: Arial, sans-serif;
+      font-size: 1.6rem;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: center; 
       min-height: 100vh;
-
-      padding: 80px 16px 40px;
+      padding: 120px 16px 40px; 
       background-image: url('../images/bckgroundcalculadora.jpg');
       background-size: cover;
       background-repeat: no-repeat;
@@ -119,7 +37,158 @@
       background-position: center;
     }
 
-    /* ===== CARD ===== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #fcfbf8; 
+      padding: 15px 40px;
+      width: 100%;
+      position: fixed; 
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
+      overflow: visible;
+    }
+
+    .menu-toggle-checkbox {
+      display: none;
+    }
+
+    .logo-menu {
+      font-size: 2.2rem;
+      font-weight: 500;
+      color: #1b352b; 
+      line-height: 1.1;
+    }
+
+    .logo-menu span {
+      font-size: 2.2rem;
+    }
+
+    .menu-icon {
+      display: none; 
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #1b352b;
+      font-size: 1.6rem; 
+      transition: opacity 0.2s ease;
+    }
+
+    .nav-links li a:hover {
+      opacity: 0.7;
+    }
+
+    .seta {
+      font-size: 1.2rem;
+      vertical-align: middle;
+    }
+
+    .nav-links li a.btn-destaque {
+      background-color: #dce0d1; 
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .nav-links li a.btn-destaque:hover {
+      background-color: #cdd2c0;
+      opacity: 1;
+    }
+
+    .icone-hamburguer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 32px;
+      height: 24px; 
+    }
+
+    .icone-hamburguer span {
+      display: block;
+      height: 4px;
+      width: 100%;
+      background-color: #1b352b; 
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    @media (max-width: 1024px) {
+      .navbar {
+        padding: 15px 20px;
+      }
+
+      .menu-icon {
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-links {
+        display: none; 
+        position: absolute;
+        top: 65px; 
+        right: 20px; 
+        min-width: 220px; 
+        background-color: #ffffff; 
+        flex-direction: column;
+        padding: 10px 0; 
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15); 
+        border-radius: 4px; 
+        gap: 0; 
+      }
+
+      .nav-links li {
+        width: 100%;
+        text-align: left; 
+      }
+
+      .nav-links li a {
+        display: block;
+        padding: 12px 20px;
+        font-size: 1.6rem;
+      }
+
+      .nav-links li a:hover {
+        background-color: #f5f5f5;
+        opacity: 1;
+      }
+
+      .nav-links li a.btn-destaque {
+        margin: 5px 20px 10px 20px; 
+        text-align: center;
+        display: block;
+      }
+
+      .menu-toggle-checkbox:checked ~ .nav-links {
+        display: flex;
+      }
+
+      .menu-toggle-checkbox:checked + .menu-icon .icone-hamburguer span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+      }
+      
+      .menu-toggle-checkbox:checked + .menu-icon .icone-hamburguer span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .menu-toggle-checkbox:checked + .menu-icon .icone-hamburguer span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+      }
+    }
+
     .card {
       background: #ffffff;
       border-radius: 16px;
@@ -127,10 +196,11 @@
       padding: 32px;
       width: 100%;
       max-width: 620px;
+      margin: auto; 
     }
 
     .card h1 {
-      font-size: 1.4rem;
+      font-size: 2.4rem;
       font-weight: 800;
       color: #1a1a2e;
       margin-bottom: 24px;
@@ -153,7 +223,7 @@
     }
 
     .campo label {
-      font-size: 0.82rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: #555;
       margin-bottom: 6px;
@@ -180,14 +250,14 @@
       outline: none;
       background: transparent;
       padding: 10px 12px;
-      font-size: 1rem;
+      font-size: 1.6rem;
       color: #1a1a2e;
       width: 100%;
     }
 
     .prefixo {
       padding: 10px 10px 10px 12px;
-      font-size: 0.9rem;
+      font-size: 1.4rem; 
       font-weight: 700;
       color: #888;
       white-space: nowrap;
@@ -197,7 +267,7 @@
 
     .sufixo {
       padding: 10px 12px;
-      font-size: 0.9rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: #888;
       white-space: nowrap;
@@ -209,7 +279,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.85rem;
+      font-size: 1.4rem; 
       color: #555;
       margin-bottom: 24px;
       cursor: pointer;
@@ -235,7 +305,7 @@
       border: none;
       border-radius: 8px;
       padding: 12px 28px;
-      font-size: 1rem;
+      font-size: 1.6rem;
       cursor: pointer;
       letter-spacing: 0.5px;
     }
@@ -254,7 +324,7 @@
       border: 2px solid #3C4122;
       border-radius: 8px;
       padding: 12px 24px;
-      font-size: 1rem;
+      font-size: 1.6rem;
       cursor: pointer;
     }
 
@@ -272,21 +342,21 @@
     }
 
     .resultado h2 {
-      font-size: 1rem;
+      font-size: 1.6rem; 
       font-weight: 700;
       color: #444;
       margin-bottom: 12px;
     }
 
     .resultado-valor {
-      font-size: 2rem;
+      font-size: 3.2rem; 
       font-weight: 800;
       color: #3C4122;
     }
 
     .resultado-detalhe {
       margin-top: 8px;
-      font-size: 0.9rem;
+      font-size: 1.4rem; 
       color: #666;
       line-height: 1.6;
     }
@@ -297,72 +367,45 @@
       border-radius: 12px;
       padding: 14px 20px;
       color: #c0392b;
-      font-size: 0.9rem;
+      font-size: 1.4rem; 
       font-weight: 600;
       display: none;
     }
-    nav a.btn-destaque {
-  background-color: #dce0d1; 
-   padding-right: 12px; 
-   padding-left: 12px;
-   border-radius: 4px;
-   font-weight: 600;
-}
-
-nav a.btn-destaque:hover {
-    background-color: #cdd2c0;
-}
-    
   </style>
-
 </head>
 
 <body>
 
+  <nav class="navbar">
+      <div class="logo-menu">
+          EcoTurismo<br><span>Minas Gerais&reg;</span>
+      </div>
 
-  <nav>
-    <ul>
-      <li><a href="../index.html">EcoTurismo</a></li>
-      <li><a href="./guia-trilhas.html">Guia Trilhas</a></li>
-      <li><a href="./galeria-trilhas.html">Galeria</a></li> 
-      <li><a href="./mapa-rotas.html">Mapa Rotas</a></li>
-      <li><a href="./calculadora-gastos.html">Calculadora</a></li>
-      <li><a href="./pagina-sobre.html">Sobre</a></li>
-      <li class="hideMobile"><a href="./landing-page.html" class="btn-destaque">Consultoria</a></li>
-      <li class="hideDesktop" onclick="showSidebar()"><a href="#">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-            fill="#e3e3e3">
-            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
-          </svg>
-        </a></li>
-    </ul>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+      
+      <label for="menu-toggle" class="menu-icon">
+          <div class="icone-hamburguer">
+              <span></span>
+              <span></span>
+              <span></span>
+          </div>
+      </label>
 
-    <ul class="sidebar" id="sidebar">
-      <li onclick="hideSidebar()"><a href="#">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-            fill="#e3e3e3">
-            <path
-              d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-          </svg>
-        </a></li>
-      <li><a href="../index.html">EcoTurismo</a></li>
-      <li><a href="./guia-trilhas.html">Guia Trilhas</a></li>
-      <li><a href="./galeria-trilhas.html">Galeria</a></li> 
-      <li><a href="./mapa-rotas.html">Mapa Rotas</a></li>
-      <li><a href="./calculadora-gastos.html">Calculadora</a></li>
-      <li><a href="./pagina-sobre.html">Sobre</a></li>
-      <li><a href="./landing-page.html" class="btn-destaque">Consultoria</a></li>
-    </ul>
+      <ul class="nav-links">
+          <li><a href="../index.html">Início</a></li>
+          <li><a href="./guia-trilhas.html">Guia Trilhas <span class="seta">&#709;</span></a></li>
+          <li><a href="./galeria-trilhas.html">Galeria <span class="seta">&#709;</span></a></li>
+          <li><a href="./mapa-rotas.html">Mapa <span class="seta">&#709;</span></a></li>
+          <li><a href="./calculadora-gastos.html">Calculadora</a></li>
+          <li><a href="./pagina-sobre.html">Sobre</a></li>
+          <li><a href="./landing-page.html" class="btn-destaque">Consultoria</a></li>
+      </ul>
   </nav>
-
-
 
   <div class="card">
     <h1>⛽ Cálculo do Combustível</h1>
 
-    <!-- CAMPOS DE ENTRADA -->
     <div class="campos">
-
 
       <div class="campo">
         <label for="distancia">Distância percorrida</label>
@@ -372,7 +415,6 @@ nav a.btn-destaque:hover {
         </div>
       </div>
 
-
       <div class="campo">
         <label for="consumo">Consumo médio do veículo</label>
         <div class="input-linha">
@@ -380,7 +422,6 @@ nav a.btn-destaque:hover {
           <span class="sufixo">km / l</span>
         </div>
       </div>
-
 
       <div class="campo">
         <label for="preco">Preço por litro</label>
@@ -392,94 +433,72 @@ nav a.btn-destaque:hover {
 
     </div>
 
-    <!-- CHECKBOX VOLTA -->
     <label class="checkbox-linha">
       <input type="checkbox" id="volta">
       Adicionar o caminho de volta
     </label>
 
-    <!-- BOTÕES -->
     <div class="botoes">
       <button class="btn-calcular" onclick="calcular()">CALCULAR</button>
       <button class="btn-limpar" onclick="limpar()">LIMPAR</button>
     </div>
 
-    <!-- MENSAGEM DE ERRO -->
     <div class="erro" id="erro">
       ⚠️ Preencha todos os campos corretamente antes de calcular.
     </div>
 
-    <!-- RESULTADO -->
     <div class="resultado" id="resultado">
       <h2>💰 Custo total da viagem</h2>
       <div class="resultado-valor" id="custo-total">R$ 0,00</div>
       <div class="resultado-detalhe" id="detalhe-resultado"></div>
     </div>
-    <script>
-      // ===== FUNÇÃO CALCULAR =====
-      function calcular() {
+  </div> <script>
+    // ===== FUNÇÃO CALCULAR =====
+    function calcular() {
 
-        var distancia = parseFloat(document.getElementById("distancia").value);
-        var consumo = parseFloat(document.getElementById("consumo").value);
-        var preco = parseFloat(document.getElementById("preco").value);
-        var volta = document.getElementById("volta").checked;
+      var distancia = parseFloat(document.getElementById("distancia").value);
+      var consumo = parseFloat(document.getElementById("consumo").value);
+      var preco = parseFloat(document.getElementById("preco").value);
+      var volta = document.getElementById("volta").checked;
 
+      document.getElementById("resultado").style.display = "none";
+      document.getElementById("erro").style.display = "none";
 
-        document.getElementById("resultado").style.display = "none";
-        document.getElementById("erro").style.display = "none";
-
-
-        if (isNaN(distancia) || isNaN(consumo) || isNaN(preco) ||
-          distancia <= 0 || consumo <= 0 || preco <= 0) {
-          document.getElementById("erro").style.display = "block";
-          return;
-        }
-
-
-        if (volta) {
-          distancia = distancia * 2;
-        }
-
-        var litros = distancia / consumo;
-
-
-
-        var custo = litros * preco;
-
-
-        document.getElementById("custo-total").textContent =
-          "R$ " + custo.toFixed(2).replace(".", ",");
-
-        document.getElementById("detalhe-resultado").innerHTML =
-          "Distância total: <strong>" + distancia.toFixed(0) + " km</strong><br>" +
-          "Litros necessários: <strong>" + litros.toFixed(2).replace(".", ",") + " L</strong><br>" +
-          "Preço por litro: <strong>R$ " + preco.toFixed(2).replace(".", ",") + "</strong>";
-
-        document.getElementById("resultado").style.display = "block";
+      if (isNaN(distancia) || isNaN(consumo) || isNaN(preco) ||
+        distancia <= 0 || consumo <= 0 || preco <= 0) {
+        document.getElementById("erro").style.display = "block";
+        return;
       }
 
-      // ===== FUNÇÃO LIMPAR =====
-      function limpar() {
-
-        document.getElementById("distancia").value = "";
-        document.getElementById("consumo").value = "";
-        document.getElementById("preco").value = "";
-        document.getElementById("volta").checked = false;
-
-
-        document.getElementById("resultado").style.display = "none";
-        document.getElementById("erro").style.display = "none";
-      }
-      // ====FUNÇÃO MENU NAV ====//
-      function showSidebar() {
-        document.getElementById('sidebar').style.display = 'flex';
+      if (volta) {
+        distancia = distancia * 2;
       }
 
-      function hideSidebar() {
-        document.getElementById('sidebar').style.display = 'none';
-      }
+      var litros = distancia / consumo;
+      var custo = litros * preco;
 
-    </script>
+      document.getElementById("custo-total").textContent =
+        "R$ " + custo.toFixed(2).replace(".", ",");
+
+      document.getElementById("detalhe-resultado").innerHTML =
+        "Distância total: <strong>" + distancia.toFixed(0) + " km</strong><br>" +
+        "Litros necessários: <strong>" + litros.toFixed(2).replace(".", ",") + " L</strong><br>" +
+        "Preço por litro: <strong>R$ " + preco.toFixed(2).replace(".", ",") + "</strong>";
+
+      document.getElementById("resultado").style.display = "block";
+    }
+
+    // ===== FUNÇÃO LIMPAR =====
+    function limpar() {
+      document.getElementById("distancia").value = "";
+      document.getElementById("consumo").value = "";
+      document.getElementById("preco").value = "";
+      document.getElementById("volta").checked = false;
+
+      document.getElementById("resultado").style.display = "none";
+      document.getElementById("erro").style.display = "none";
+    }
+  </script>
 </body>
 
 </html>
