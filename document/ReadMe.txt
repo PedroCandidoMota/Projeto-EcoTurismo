@@ -2,8 +2,8 @@ Nome do projeto: EcoTurismo
 Link da publicação do projeto: N/A
 
 PARTICIPANTES DO GRUPO E PAPÉis: 
-Eduarda Peixoto Dantas (Dev)
-Miguel Lopes de Souza Kroeff (Designer / Copywriter)
+Eduarda Peixoto Dantas (CopyWriter)
+Miguel Lopes de Souza Kroeff (Designer / dev)
 Pedro Cândido Vieira Mota (Tech-lead / dev)
 
 OBJETIVO PRINCIPAL DO PROJETO: 
