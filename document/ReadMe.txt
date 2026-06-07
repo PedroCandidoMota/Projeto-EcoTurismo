@@ -2,9 +2,9 @@ Nome do projeto: EcoTurismo
 Link da publicação do projeto: N/A
 
 Participantes e papéis: 
-Eduarda Peixoto Dantas (Dev)
-Miguel Lopes de Souza Kroeff (Designer / Copywriter)
-Pedro Cândido Vieira Mota (Tech-lead / dev)
+Eduarda Peixoto Dantas (Copywriter)
+Miguel Lopes de Souza Kroeff (Designer / Dev )
+Pedro Cândido Vieira Mota (Tech-lead / Dev)
 
 Objetivo principal do projeto: O objetivo principal deste projeto é desenvolver uma plataforma web funcional e interativa que promova o ecoturismo em Belo Horizonte e região, 
 incentivando a preservação ambiental e o apoio à economia local por meio de práticas sustentáveis. Ao facilitar o acesso a informações sobre trilhas e áreas de conservação,
